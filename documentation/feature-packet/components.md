@@ -4,9 +4,11 @@
 * SearchPage
 * CharacterCard
 * GroupCard
+* GroupPage
 * CharacterPage
-* CharacterDetail
 * LeaderboardPage
 * LeaderboardDetail
+* ClassPage
+* ClassDetail
 * VehiclePage
 * VehicleDetail
