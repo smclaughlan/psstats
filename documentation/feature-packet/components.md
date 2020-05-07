@@ -1,6 +1,8 @@
 # Components
 
 * Nav
+* HomePage
+  * Describes and links to other pages
 * SearchPage
 * CharacterCard
 * GroupCard
@@ -12,3 +14,5 @@
 * ClassDetail
 * VehiclePage
 * VehicleDetail
+* FactionPage
+* FactionDetail
