@@ -8,3 +8,5 @@
 * CharacterDetail
 * LeaderboardPage
 * LeaderboardDetail
+* VehiclePage
+* VehicleDetail
