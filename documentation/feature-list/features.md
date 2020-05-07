@@ -7,4 +7,4 @@
 * As a user, I want to be able to view the vehicles in the game and get a general description of them on one page
 * As a user, I want to be able to view the classes in the game and get a general description of them on one page
 * As a user, I want to be able to view the factions in the game and a general description of them on one page
-BONUS: Create charts with https://www.npmjs.com/package/rumble-charts or Grommet, or similar package
+* BONUS: Create charts with https://www.npmjs.com/package/rumble-charts or Grommet, or similar package
