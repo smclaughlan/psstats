@@ -6,8 +6,9 @@ const CharacterPage = () => {
   const [loaded, setLoaded] = React.useState(false);
 
   const getCharData = async () => {
-    console.log(window.location.href.split('/')[4]);
-    const res = fetch(`${backEndURL}/`);
+    const name = window.location.href.split('/')[4];
+    const res = await fetch(`${backEndURL}/char/${name}`);
+    console.log(res);
     if (res.ok) {
       const resData = await res.json();
       setData(resData);
@@ -15,28 +16,20 @@ const CharacterPage = () => {
     }
   }
 
-  React.useEffect(() => {
-    //try using lots of variables and updating them here instead
-
-  });
-
-  if (data) {
-    const { first, creation_date } = data;
-    return (
-      <div>
-        <h1>{first}</h1>
-        <h2>{creation_date}</h2>
-      </div>
-    )
-  }
-
   if (!loaded) {
     setLoaded(true);
+    getCharData();
+    console.log(data);
   }
-
-  return (
+  return (data ?
+    <div>
+      <h1>{data.character_list[0].name.first}</h1 >
+      <h2>Creation date: {data.character_list[0].times.creation_date.split(' ')[0]}</h2>
+    </div>
+    :
     <h1>Loading...</h1>
   )
 }
+
 
 export default CharacterPage;

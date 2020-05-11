@@ -1,0 +1,47 @@
+import React from 'react';
+import { Button } from 'grommet';
+import { backEndURL } from '../config';
+
+const OutfitPage = () => {
+  const [data, setData] = React.useState(null);
+  const [loaded, setLoaded] = React.useState(false);
+
+  const getOutfitData = async () => {
+    let outfitId = window.location.href.split('/')[4];
+    console.log(outfitId);
+    const res = await fetch(`${backEndURL}/outfit/${outfitId}`);
+    console.log(res);
+    if (res.ok) {
+      const resData = await res.json();
+      setData(resData);
+      console.log(data);
+    }
+  }
+
+  if (!loaded) {
+    setLoaded(true);
+    getOutfitData();
+  }
+
+  console.log(data);
+  return (data ?
+    <div>
+      <h1>{data.outfit_list[0].alias}</h1 >
+      <h2>{data.outfit_list[0].name}</h2>
+      <h2>{data.outfit_list[0].time_created_date.split(' ')[0]}</h2>
+      {data.outfit_list[0].members.map(member => {
+        return (
+          <div>
+            <Button label={member.name.first} href={`/char/${member.name.first}`} />
+            <p>{member.main_class[0].name.en}</p>
+            <p>Outfit Rank: {member.rank_ordinal}     Battle Rank: {member.battle_rank.value}</p>
+          </div>
+        )
+      })}
+    </div>
+    :
+    <h1>Loading...</h1>
+  )
+}
+
+export default OutfitPage;

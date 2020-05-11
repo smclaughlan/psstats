@@ -4,6 +4,7 @@ import Nav from './components/Nav';
 import HomePage from './components/HomePage';
 import SearchPage from './components/SearchPage';
 import CharacterPage from './components/CharacterPage';
+import OutfitPage from './components/OutfitPage';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <BrowserRouter>
       <Nav />
       <Switch>
+        <Route path="/outfit/:id" component={OutfitPage} />
         <Route path="/char/:id" component={CharacterPage} />
         <Route path="/search" component={SearchPage} />
         <Route path="/" component={HomePage} />

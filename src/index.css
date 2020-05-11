@@ -5,12 +5,18 @@ html, body {
 }
 
 .outfitBox{
+  transition: all 1s;
   margin:20px auto;
 }
 
 .outfitBox:hover{
   transition: all 1s;
-  box-shadow: 1px 1px 5px 5px white;
+  box-shadow: 1px 1px 5px 5px #339933;
+}
+
+.searchResContainer{
+  margin: 0 auto;
+  max-width: 800px;
 }
 
 .searchRes {
