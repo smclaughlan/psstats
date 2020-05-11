@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { TextInput, Heading, Paragraph, Main, Box, Button, Select } from 'grommet';
 import { NavLink } from 'react-router-dom';
+import { backEndURL } from '../config';
 
 const SearchPage = () => {
   const [value, setValue] = React.useState('');
@@ -14,11 +15,11 @@ const SearchPage = () => {
   const performSearch = async (e) => {
     if (e.keyCode === 13) {
       if (selectValue === 'Character') {
-        const res = await fetch(`http://census.daybreakgames.com/s:sm579/get/ps2:v2/character_name/?name.first_lower=^${value.toLowerCase()}&c:limit=10&c:show=name.first&c:sort=name.first_lower`);
+        const res = await fetch(`${backEndURL}/char/${value.toLowerCase()}`);
         if (res.ok) {
           const resJson = await res.json();
           setResults(resJson);
-          console.log(results);
+          console.log(resJson);
         }
       }
       if (selectValue === 'Outfit') {
