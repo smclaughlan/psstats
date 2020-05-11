@@ -4,6 +4,15 @@ html, body {
   padding: 0;
 }
 
+.outfitBox{
+  margin:20px auto;
+}
+
+.outfitBox:hover{
+  transition: all 1s;
+  box-shadow: 1px 1px 5px 5px white;
+}
+
 .searchRes {
   margin: 20px auto;
   max-width: 200px;

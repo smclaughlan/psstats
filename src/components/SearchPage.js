@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { TextInput, Heading, Paragraph, Main, Box, Button, Select } from 'grommet';
-import { NavLink } from 'react-router-dom';
 import { backEndURL } from '../config';
 
 const SearchPage = () => {
@@ -19,15 +18,13 @@ const SearchPage = () => {
         if (res.ok) {
           const resJson = await res.json();
           setResults(resJson);
-          console.log(resJson);
         }
       }
       if (selectValue === 'Outfit') {
-        const res = await fetch(`http://census.daybreakgames.com/s:sm579/get/ps2:v2/outfit/?name=^${value}&c:limit=10&c:sort=member_count:-1`);
+        const res = await fetch(`${backEndURL}/outfit/${value}`);
         if (res.ok) {
           const resJson = await res.json();
           setResults(resJson);
-          console.log(results);
         }
       }
     }
@@ -108,8 +105,15 @@ const SearchPage = () => {
           }) : null}
         {"outfit_list" in results ?
           results.outfit_list.map(outfit => {
+            if (outfit.alias.length < 1) {
+              return null;
+            }
             return (
-              <Button className="searchRes" key={outfit.outfit_id} href={`/outfit/${outfit.alias}`} margin="medium" label={`[${outfit.alias}] ${outfit.name} (Created ${outfit.time_created_date} with ${outfit.member_count} current members)`} size="medium" />
+              <Box className="outfitBox">
+                <Button className="searchRes" key={outfit.outfit_id} href={`/outfit/${outfit.alias}`} margin="medium" size="medium" label={`${outfit.alias}`} />
+                <Paragraph>{outfit.name}</Paragraph>
+                <Paragraph>{`Created ${outfit.time_created_date.split(' ')[0]} with ${outfit.member_count} current members`}</Paragraph>
+              </Box>
             )
           }) : null}
       </Box>
