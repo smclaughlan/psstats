@@ -1,8 +1,13 @@
 import React from 'react';
+import { BrowserRouter, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <h1>Hello world!</h1>
+    <BrowserRouter>
+      <Switch>
+        <h1>Hello world!</h1>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
