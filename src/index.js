@@ -4,15 +4,6 @@ import './index.css';
 import App from './App';
 import { Grommet } from 'grommet';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Grommet darkTheme>
-      <App />
-    </Grommet>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
 const darkTheme = {
   "name": "my theme",
   "rounding": 2,
@@ -521,3 +512,12 @@ const darkTheme = {
     }
   }
 }
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Grommet theme={darkTheme}>
+      <App />
+    </Grommet>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
