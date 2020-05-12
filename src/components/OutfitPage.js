@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Box } from 'grommet';
+import { Button } from 'grommet';
 import { backEndURL, imgURL } from '../config';
 import Loading from './Loading';
 
