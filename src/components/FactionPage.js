@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box } from 'grommet';
 import { backEndURL, imgURL } from '../config';
+import Loading from './Loading';
 
 const FactionPage = () => {
   const [factionData, setFactionData] = React.useState(null);
@@ -64,7 +65,7 @@ const FactionPage = () => {
         )
       })
         :
-        <h2>Loading...</h2>}
+        <Loading />}
     </Box >
   )
 }

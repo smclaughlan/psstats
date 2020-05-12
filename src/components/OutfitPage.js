@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button } from 'grommet';
+import { Button, Box } from 'grommet';
 import { backEndURL, imgURL } from '../config';
+import Loading from './Loading';
 
 const OutfitPage = () => {
   const [data, setData] = React.useState(null);
@@ -41,7 +42,7 @@ const OutfitPage = () => {
       })}
     </div>
     :
-    <h1>Loading...</h1>
+    <Loading />
   )
 }
 

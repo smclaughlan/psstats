@@ -1,5 +1,6 @@
 import React from 'react';
 import { backEndURL, imgURL } from '../config';
+import Loading from './Loading';
 
 const CharacterPage = () => {
   const [data, setData] = React.useState(null);
@@ -27,7 +28,7 @@ const CharacterPage = () => {
       <h2>Creation date: {data.character_list[0].times.creation_date.split(' ')[0]}</h2>
     </div>
     :
-    <h1>Loading...</h1>
+    <Loading />
   )
 }
 

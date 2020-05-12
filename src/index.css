@@ -9,6 +9,10 @@ p {
   padding-right: 10px;
 }
 
+.loader {
+  margin: 0 auto;
+}
+
 .displayOnline{
   color: greenyellow;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box } from 'grommet';
 import { imgURL } from '../config';
+import Loading from './Loading';
 
 const ClassDetail = ({ profile }) => {
 
@@ -73,7 +74,7 @@ const ClassDetail = ({ profile }) => {
           <h3>{createDesc(profile.name.en)}</h3>
         </div>
         :
-        <h2>Loading...</h2>}
+        <Loading />}
     </Box >
   )
 }

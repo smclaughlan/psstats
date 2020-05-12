@@ -2,6 +2,7 @@ import React from 'react';
 import { Box } from 'grommet';
 import { backEndURL } from '../config';
 import ClassDetail from './ClassDetail';
+import Loading from './Loading';
 
 const ClassPage = () => {
   const [classData, setClassData] = React.useState(null);
@@ -31,7 +32,7 @@ const ClassPage = () => {
         )
       })
         :
-        <h2>Loading...</h2>}
+        <Loading />}
     </Box >
   )
 }

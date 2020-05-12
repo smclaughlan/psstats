@@ -1,6 +1,7 @@
 import React from 'react';
 import { backEndURL } from '../config';
 import { Box, Button } from 'grommet';
+import Loading from './Loading';
 
 const LeaderboardPage = () => {
   const [dataScore, setDataScore] = React.useState(null);
@@ -81,7 +82,7 @@ const LeaderboardPage = () => {
             )
           })
             :
-            <h1>Loading...</h1>}
+            <Loading />}
         </Box>
         <Box>
           <h2>Play time:</h2>
@@ -94,7 +95,7 @@ const LeaderboardPage = () => {
             )
           })
             :
-            <h1>Loading...</h1>}
+            <Loading />}
         </Box>
         <Box>
           <h2>Kills:</h2>
@@ -108,7 +109,7 @@ const LeaderboardPage = () => {
             )
           })
             :
-            <h1>Loading...</h1>}
+            <Loading />}
         </Box>
       </Box >
     </>

@@ -32,7 +32,9 @@ const VehiclePage = () => {
         )
       })
         :
-        <h2>Loading...</h2>}
+        <Box>
+          <img className="loader" width="30" alt="Loading..." src="/images/loading.gif" />
+        </Box>}
     </Box >
   )
 }
