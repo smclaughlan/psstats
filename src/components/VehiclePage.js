@@ -4,7 +4,6 @@ import { backEndURL, imgURL } from '../config';
 
 const VehiclePage = () => {
   const [vehData, setVehData] = React.useState(null);
-
   const [loaded, setLoaded] = React.useState(false);
 
   const getVehData = async vehicle => {
@@ -18,9 +17,7 @@ const VehiclePage = () => {
 
   if (!loaded) {
     setLoaded(true);
-    getVehData("Lightning");
-    getVehData("Flash");
-    getVehData("Vanguard");
+    getVehData();
   }
 
   return (
