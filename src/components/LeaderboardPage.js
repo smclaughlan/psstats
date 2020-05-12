@@ -50,17 +50,17 @@ const LeaderboardPage = () => {
     if (res.ok) {
       const resData = await res.json();
       console.log(resData);
-      if (type === 'score') setDataScore(resData);
-      if (type === 'time') setDataTime(resData);
-      if (type === 'kills') setDataKills(resData);
+      if (type === 'Score') setDataScore(resData);
+      if (type === 'Time') setDataTime(resData);
+      if (type === 'Kills') setDataKills(resData);
     }
   }
 
   if (!loaded) {
     setLoaded(true);
-    getLBData('score');
-    getLBData('time');
-    getLBData('kills');
+    getLBData('Score');
+    getLBData('Time');
+    getLBData('Kills');
     console.log(dataKills);
   }
 
