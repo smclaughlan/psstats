@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'grommet';
-import { backEndURL } from '../config';
+import { backEndURL, imgURL } from '../config';
 
 const OutfitPage = () => {
   const [data, setData] = React.useState(null);
@@ -33,7 +33,7 @@ const OutfitPage = () => {
         return (
           <div>
             <Button key={member.name.first} label={member.name.first} href={`/char/${member.name.first}`} />
-            <p>{member.main_class[0].name.en}</p>
+            <p><img width="30" alt={member.main_class[0].name.en} src={`${imgURL}${member.main_class[0].image_path}`} /> {member.main_class[0].name.en}</p>
             <p>Outfit Rank: {member.rank_ordinal}     Battle Rank: {member.battle_rank.value}</p>
             <p className="displayOnline">{member.online_status === "1" ? "--- ONLINE ---" : " "}</p>
           </div>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { TextInput, Heading, Paragraph, Main, Box, Button, Select } from 'grommet';
-import { backEndURL } from '../config';
+import { backEndURL, imgURL } from '../config';
 
 const SearchPage = () => {
   const [value, setValue] = React.useState('');
