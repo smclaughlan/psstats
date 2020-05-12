@@ -56,10 +56,18 @@ const ClassDetail = ({ profile }) => {
     }
   }
 
+
+  const getImagePath = profileName => { //images also from planetside 2 wiki, creative commons attribution
+    let profileFormatted = profileName.split(' ').join('').toLowerCase();
+    return `/images/${profileFormatted}.png`;
+  }
+
+
   return (
     <Box>
       {profile ?
         <div>
+          <img alt={profile.name.en} src={getImagePath(profile.name.en)} />
           <h2>{profile.name.en}</h2>
           <img alt={profile.name.en} src={`${imgURL}${profile.image_path}`} />
           <h3>{createDesc(profile.name.en)}</h3>
