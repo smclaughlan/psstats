@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box } from 'grommet';
 import { backEndURL, imgURL } from '../config';
+import ClassDetail from './ClassDetail';
 
 const ClassPage = () => {
   const [classData, setClassData] = React.useState(null);
@@ -19,16 +20,14 @@ const ClassPage = () => {
     setLoaded(true);
     getClassData();
   }
-
+  //TODO attribute class descriptions and link to the planetside 2 wiki, creative commons attribution license
+  //example page with link https://planetside.fandom.com/wiki/MAX
+  //https://creativecommons.org/licenses/by-sa/3.0/
   return (
     <Box>
       {classData ? classData.profile_list.map(profile => {
         return (
-          <div>
-            <h2 key={profile.profile_id}>{profile.name.en}</h2>
-            <h3>{profile.description.en}</h3>
-            <img alt={profile.name.en} src={`${imgURL}${profile.image_path}`} />
-          </div>
+          <ClassDetail profile={profile} />
         )
       })
         :
