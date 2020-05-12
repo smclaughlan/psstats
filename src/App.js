@@ -5,6 +5,7 @@ import HomePage from './components/HomePage';
 import SearchPage from './components/SearchPage';
 import CharacterPage from './components/CharacterPage';
 import OutfitPage from './components/OutfitPage';
+import LeaderboardPage from './components/LeaderboardPage';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <BrowserRouter>
       <Nav />
       <Switch>
+        <Route path="/leaderboard" component={LeaderboardPage} />
         <Route path="/outfit/:id" component={OutfitPage} />
         <Route path="/char/:id" component={CharacterPage} />
         <Route path="/search" component={SearchPage} />

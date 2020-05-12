@@ -4,6 +4,11 @@ html, body {
   padding: 0;
 }
 
+p {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .displayOnline{
   color: greenyellow;
 }
