@@ -4,6 +4,10 @@ html, body {
   padding: 0;
 }
 
+.displayOnline{
+  color: greenyellow;
+}
+
 .outfitBox{
   transition: all 1s;
   margin:20px auto;

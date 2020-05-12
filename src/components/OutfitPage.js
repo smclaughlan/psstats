@@ -32,9 +32,10 @@ const OutfitPage = () => {
       {data.outfit_list[0].members.map(member => {
         return (
           <div>
-            <Button label={member.name.first} href={`/char/${member.name.first}`} />
+            <Button key={member.name.first} label={member.name.first} href={`/char/${member.name.first}`} />
             <p>{member.main_class[0].name.en}</p>
             <p>Outfit Rank: {member.rank_ordinal}     Battle Rank: {member.battle_rank.value}</p>
+            <p className="displayOnline">{member.online_status === "1" ? "--- ONLINE ---" : " "}</p>
           </div>
         )
       })}
