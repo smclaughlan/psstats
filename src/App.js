@@ -8,6 +8,7 @@ import OutfitPage from './components/OutfitPage';
 import LeaderboardPage from './components/LeaderboardPage';
 import VehiclePage from './components/VehiclePage';
 import ClassPage from './components/ClassPage';
+import FactionPage from './components/FactionPage';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <BrowserRouter>
       <Nav />
       <Switch>
+        <Route path="/factions" component={FactionPage} />
         <Route path="/classes" component={ClassPage} />
         <Route path="/vehicles" component={VehiclePage} />
         <Route path="/leaderboard" component={LeaderboardPage} />

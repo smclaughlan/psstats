@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from 'grommet';
-import { backEndURL, imgURL } from '../config';
+import { backEndURL } from '../config';
 import ClassDetail from './ClassDetail';
 
 const ClassPage = () => {
