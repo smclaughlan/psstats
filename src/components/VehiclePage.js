@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from 'grommet';
-import { backEndURL } from '../config';
+import { backEndURL, imgURL } from '../config';
 
 const VehiclePage = () => {
   const [vehData, setVehData] = React.useState(null);
@@ -24,12 +24,13 @@ const VehiclePage = () => {
   }
 
   return (
-    <Box direction="row">
-      {vehData ? vehData.map(vehicle => {
+    <Box>
+      {vehData ? vehData.vehicle_list.map(vehicle => {
         return (
           <div>
-            <h2 key={vehicle.vehName}>{vehicle.vehName}</h2>
-            <h3>{vehicle.vehDesc}</h3>
+            <h2 key={vehicle.vehicle_id}>{vehicle.name.en}</h2>
+            <h3>{vehicle.description.en}</h3>
+            <img alt={vehicle.name.en} src={`${imgURL}${vehicle.image_path}`} />
           </div>
         )
       })
