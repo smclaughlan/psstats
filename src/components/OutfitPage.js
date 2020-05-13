@@ -17,15 +17,24 @@ const OutfitPage = () => {
       const resData = await res.json();
       setData(resData);
       let unsortedMembers = resData.outfit_list[0].members.slice();
-      let convertedMembers = convertMemDataToInt(unsortedMembers);
+      let convertedMembers = formatMemData(unsortedMembers);
       sortMembers(convertedMembers, "online");
     }
   }
 
-  const convertMemDataToInt = (unsortedMembers) => {
+  const formatMemData = (unsortedMembers) => {
     return unsortedMembers.map(member => {
       member.rank_ordinal = parseInt(member.rank_ordinal);
       member.battle_rank.value = parseInt(member.battle_rank.value);
+      let tempKDR = (parseInt(member.stats_history[1].all_time) / parseInt(member.stats_history[0].all_time)).toString();
+      if (tempKDR.indexOf(".") === -1) { //no dot, use whole number
+        member.kdr = tempKDR;
+      } else {
+        let idxToSplit = tempKDR.indexOf(".");
+        let startKDR = tempKDR.slice(0, idxToSplit);
+        let endKDR = tempKDR.slice(idxToSplit, idxToSplit + 3);
+        member.kdr = startKDR + endKDR;
+      }
       return member;
     })
   }
@@ -66,6 +75,11 @@ const OutfitPage = () => {
           value: member => member.battle_rank.value
         }
       })
+    } else if (sortMethod === "kdr") {
+      sortArray(newMemberArr, {
+        by: "kdr",
+        order: "desc"
+      })
     }
     setMembers(newMemberArr);
   }
@@ -89,6 +103,7 @@ const OutfitPage = () => {
             <TableCell><Button label="Name" onClick={() => { sortMembers(members, "name") }} /></TableCell>
             <TableCell><Button label="Outfit Rank" onClick={() => { sortMembers(members, "outfitrank") }} /></TableCell>
             <TableCell><Button label="Battle Rank" onClick={() => { sortMembers(members, "battlerank") }} /></TableCell>
+            <TableCell><Button label="Kill/Death Ratio" onClick={() => { sortMembers(members, "kdr") }} /></TableCell>
             <TableCell><Button label="Online Status" onClick={() => { sortMembers(members, "online") }} /></TableCell>
           </TableRow>
           {members.map((member, idx) => {
@@ -99,6 +114,7 @@ const OutfitPage = () => {
                 <TableCell><Button key={member.name.first} label={member.name.first} href={`/char/${member.name.first}`} /></TableCell>
                 <TableCell>{member.rank_ordinal}. {member.rank}</TableCell>
                 <TableCell>{member.battle_rank.value}</TableCell>
+                <TableCell>{member.kdr}</TableCell>
                 <TableCell className="displayOnline">{member.online_status === "1" ? "--- ONLINE ---" : " "}</TableCell>
               </TableRow>
             )
@@ -110,5 +126,6 @@ const OutfitPage = () => {
     <Loading />
   )
 }
+
 
 export default OutfitPage;
