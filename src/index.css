@@ -21,6 +21,11 @@ p {
   color: greenyellow;
 }
 
+.factionVideo {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
 .outfitBox{
   transition: all 1s;
   margin:20px auto;

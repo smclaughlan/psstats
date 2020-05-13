@@ -82,7 +82,7 @@ const FactionPage = () => {
                 </Box>
               </Tab>
               <Tab title="Video">
-                <ReactPlayer url={getFactionVid(faction.name.en)} controls={true} playing volume={0.1} />
+                <ReactPlayer className="factionVideo" url={getFactionVid(faction.name.en)} controls={true} playing volume={0.1} />
               </Tab>
             </Tabs>
           </>
