@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Box } from 'grommet';
-import Nav from './components/Nav';
+import NavBar from './components/NavBar';
 import HomePage from './components/HomePage';
 import SearchPage from './components/SearchPage';
 import CharacterPage from './components/CharacterPage';
@@ -15,7 +15,7 @@ import FactionPage from './components/FactionPage';
 function App() {
   return (
     <BrowserRouter>
-      <Nav />
+      <NavBar />
       <div className="siteContainer"></div>
       <Switch>
         <Route path="/factions" component={FactionPage} />

@@ -3,6 +3,7 @@ import { Box, Tabs, Tab } from 'grommet';
 import { backEndURL, imgURL } from '../config';
 import Loading from './Loading';
 import ReactPlayer from 'react-player';
+import Attribution from './Attribution';
 
 const FactionPage = () => {
   const [factionData, setFactionData] = React.useState(null);
@@ -90,6 +91,7 @@ const FactionPage = () => {
       })
         :
         <Loading />}
+      <Attribution />
     </Box >
   )
 }

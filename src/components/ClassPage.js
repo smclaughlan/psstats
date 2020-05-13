@@ -3,6 +3,7 @@ import { Box } from 'grommet';
 import { backEndURL } from '../config';
 import ClassDetail from './ClassDetail';
 import Loading from './Loading';
+import Attribution from './Attribution';
 
 const ClassPage = () => {
   const [classData, setClassData] = React.useState(null);
@@ -33,6 +34,7 @@ const ClassPage = () => {
       })
         :
         <Loading />}
+      <Attribution />
     </Box >
   )
 }
