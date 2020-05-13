@@ -14,13 +14,14 @@ const NavBar = () => {
             <Anchor label="Factions" href="/factions" hoverIndicator />
             <Anchor label="Classes" href="/classes" hoverIndicator />
             <Anchor label="Vehicles" href="/vehicles" hoverIndicator />
+            <Anchor label="Leaderboard" href="/leaderboard" hoverIndicator />
           </Box>
         }
       >
-        <i class="fas fa-bars"></i>
+        <i className="fas fa-bars"></i>
       </DropButton>
       <Anchor href="/search" color="light-2">
-        <i class="fas fa-search"></i>
+        <i className="fas fa-search"></i>
       </Anchor>
     </Nav>
   )
