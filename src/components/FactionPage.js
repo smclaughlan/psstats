@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box } from 'grommet';
+import { Box, Tabs, Tab } from 'grommet';
 import { backEndURL, imgURL } from '../config';
 import Loading from './Loading';
+import ReactPlayer from 'react-player';
 
 const FactionPage = () => {
   const [factionData, setFactionData] = React.useState(null);
@@ -52,16 +53,39 @@ const FactionPage = () => {
     return `Error in getFactionDesc`;
   }
 
+  const getFactionVid = factionName => {
+    if (factionName === "Vanu Sovereignty") {
+      return `https://www.youtube.com/watch?v=JkTnvST9Teg`;
+    } else if (factionName === "New Conglomerate") {
+      return `https://www.youtube.com/watch?v=ErA4jNfVSIM`;
+    } else if (factionName === "Terran Republic") {
+      return `https://www.youtube.com/watch?v=CHN9CdBqSYM`;
+    } else if (factionName === "NS Operatives") {
+      return `https://www.youtube.com/watch?v=Y0ZlJX7n3cA`;
+    }
+  }
+
   return (
     <Box>
       {factionData ? factionData.faction_list.map(faction => {
         if (Number.parseInt(faction.faction_id) === 0) return null;
         return (
-          <Box>
-            {faction.image_path ? <img width="100" alt={faction.name.en} src={`${imgURL}${faction.image_path}`} /> : null}
-            <h1>{faction.name.en} ({faction.code_tag})</h1>
-            <p>{getFactionDesc(faction.name.en)}</p>
-          </Box>
+          <>
+            <div>
+              {faction.image_path ? <img width="100" alt={faction.name.en} src={`${imgURL}${faction.image_path}`} /> : null}
+              <h1>{faction.name.en} ({faction.code_tag})</h1>
+            </div>
+            <Tabs>
+              <Tab title="Description">
+                <Box>
+                  <p>{getFactionDesc(faction.name.en)}</p>
+                </Box>
+              </Tab>
+              <Tab title="Video">
+                <ReactPlayer url={getFactionVid(faction.name.en)} controls={true} playing volume={0.1} />
+              </Tab>
+            </Tabs>
+          </>
         )
       })
         :

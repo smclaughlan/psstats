@@ -4,6 +4,10 @@ html, body {
   padding: 0;
 }
 
+body {
+  height: 100%vh;
+}
+
 p {
   padding-left: 10px;
   padding-right: 10px;
