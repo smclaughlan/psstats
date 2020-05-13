@@ -8,7 +8,9 @@ import sortArray from 'sort-array';
 const OutfitPage = () => {
   const [data, setData] = React.useState(null);
   const [members, setMembers] = React.useState([]);
-  const [loaded, setLoaded] = React.useState(false);
+  const [factionMemberData, setFactionMemberData] = React.useState(null);
+  const [loadedOutfit, setLoadedOutfit] = React.useState(false);
+  const [loadedMemberData, setLoadedMemberData] = React.useState(false);
 
   const getOutfitData = async () => {
     let outfitId = window.location.href.split('/')[4];
@@ -16,9 +18,21 @@ const OutfitPage = () => {
     if (res.ok) {
       const resData = await res.json();
       setData(resData);
+      console.log(resData);
       let unsortedMembers = resData.outfit_list[0].members.slice();
-      let convertedMembers = formatMemData(unsortedMembers);
-      sortMembers(convertedMembers, "online");
+      let convertedMembers = await formatMemData(unsortedMembers);
+      await sortMembers(convertedMembers, "online");
+    }
+  }
+
+  const getMemberData = async () => {
+    //no faction data in the outfit data. Get from first character in faction.
+    let randomMemberName = await members[0].name.first;
+    const factionData = await fetch(`${backEndURL}/char/${randomMemberName}`);
+    if (factionData.ok) {
+      const factionJson = await factionData.json();
+      await setFactionMemberData(factionJson.character_list[0]);
+      console.log(factionJson);
     }
   }
 
@@ -84,17 +98,23 @@ const OutfitPage = () => {
     setMembers(newMemberArr);
   }
 
-  if (!loaded) {
-    setLoaded(true);
+  if (!loadedOutfit) {
+    setLoadedOutfit(true);
     getOutfitData();
   }
 
+  if (members.length > 0 && !loadedMemberData) {
+    setLoadedMemberData(true);
+    getMemberData();
+  }
+
   console.log(members);
-  return (data && members ?
+  return (data && members && factionMemberData ?
     <div>
-      <h1>{data.outfit_list[0].alias}</h1 >
+      <h1><img width="30" alt={factionMemberData.faction.name.en} src={`${imgURL}${factionMemberData.faction.image_path}`} />{data.outfit_list[0].alias}</h1 >
       <h2>{data.outfit_list[0].name}</h2>
-      <h2>{data.outfit_list[0].time_created_date.split(' ')[0]}</h2>
+      <h3>Creation Date: {data.outfit_list[0].time_created_date.split(' ')[0]}</h3>
+      <h3>Member Count: {data.outfit_list[0].member_count}</h3>
       <Table>
         <TableHeader>
           <TableRow>
