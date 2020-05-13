@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Box } from 'grommet';
 import Nav from './components/Nav';
 import HomePage from './components/HomePage';
 import SearchPage from './components/SearchPage';
@@ -14,7 +15,9 @@ import FactionPage from './components/FactionPage';
 function App() {
   return (
     <BrowserRouter>
+
       <Nav />
+      <div className="siteContainer"></div>
       <Switch>
         <Route path="/factions" component={FactionPage} />
         <Route path="/classes" component={ClassPage} />
@@ -25,6 +28,7 @@ function App() {
         <Route path="/search" component={SearchPage} />
         <Route path="/" component={HomePage} />
       </Switch>
+
     </BrowserRouter>
   );
 }
