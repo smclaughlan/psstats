@@ -17,17 +17,54 @@ const OutfitPage = () => {
       const resData = await res.json();
       setData(resData);
       let unsortedMembers = resData.outfit_list[0].members.slice();
-      let sortedMembers = sortMembers(unsortedMembers, "online");
-
+      let convertedMembers = convertMemDataToInt(unsortedMembers);
+      sortMembers(convertedMembers, "online");
     }
   }
 
+  const convertMemDataToInt = (unsortedMembers) => {
+    return unsortedMembers.map(member => {
+      member.rank_ordinal = parseInt(member.rank_ordinal);
+      member.battle_rank.value = parseInt(member.battle_rank.value);
+      return member;
+    })
+  }
+
   const sortMembers = (arr, sortMethod) => {
-    const newMemberArr = arr.slice();
+    let newMemberArr = arr.slice();
     if (sortMethod === "online") {
       sortArray(newMemberArr, {
         by: "online_status",
         order: "desc",
+      })
+    } else if (sortMethod === "class") {
+      sortArray(newMemberArr, {
+        by: "en",
+        order: "desc",
+        computed: {
+          en: member => member.main_class[0].name.en
+        }
+      })
+    } else if (sortMethod === "name") {
+      sortArray(newMemberArr, {
+        by: "first",
+        order: "asc",
+        computed: {
+          first: member => member.name.first
+        }
+      })
+    } else if (sortMethod === "outfitrank") {
+      sortArray(newMemberArr, {
+        by: "rank_ordinal",
+        order: "asc"
+      })
+    } else if (sortMethod === "battlerank") {
+      sortArray(newMemberArr, {
+        by: "value",
+        order: "desc",
+        computed: {
+          value: member => member.battle_rank.value
+        }
       })
     }
     setMembers(newMemberArr);
@@ -47,15 +84,17 @@ const OutfitPage = () => {
       <Table>
         <TableHeader>
           <TableRow>
+            <TableCell></TableCell>
             <TableCell><Button label="Class" onClick={() => { sortMembers(members, "class") }} /></TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Outfit Rank</TableCell>
-            <TableCell>Battle Rank</TableCell>
-            <TableCell>Online Status</TableCell>
+            <TableCell><Button label="Name" onClick={() => { sortMembers(members, "name") }} /></TableCell>
+            <TableCell><Button label="Outfit Rank" onClick={() => { sortMembers(members, "outfitrank") }} /></TableCell>
+            <TableCell><Button label="Battle Rank" onClick={() => { sortMembers(members, "battlerank") }} /></TableCell>
+            <TableCell><Button label="Online Status" onClick={() => { sortMembers(members, "online") }} /></TableCell>
           </TableRow>
-          {members.map(member => {
+          {members.map((member, idx) => {
             return (
-              <TableRow>
+              <TableRow className="outfitTableRow">
+                <TableCell>{idx + 1}</TableCell>
                 <TableCell><img width="30" alt={member.main_class[0].name.en} src={`${imgURL}${member.main_class[0].image_path}`} /> {member.main_class[0].name.en}</TableCell>
                 <TableCell><Button key={member.name.first} label={member.name.first} href={`/char/${member.name.first}`} /></TableCell>
                 <TableCell>{member.rank_ordinal}. {member.rank}</TableCell>
