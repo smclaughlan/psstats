@@ -15,7 +15,6 @@ import FactionPage from './components/FactionPage';
 function App() {
   return (
     <BrowserRouter>
-
       <Nav />
       <div className="siteContainer"></div>
       <Switch>
