@@ -1,7 +1,8 @@
 import React from 'react';
 import { backEndURL, imgURL } from '../config';
 import Loading from './Loading';
-import { Button } from 'grommet';
+import CharacterTime from './CharacterTime';
+import { Button, Box } from 'grommet';
 
 const CharacterPage = () => {
   const [data, setData] = React.useState(null);
@@ -27,10 +28,16 @@ const CharacterPage = () => {
 
   return (data ?
     <div>
-      <h1><img width="20" alt={data.main_class.name.en} src={`${imgURL}${data.main_class.image_path}`} />{data.name.first}</h1 >
-      <h2><img width="20" alt={data.faction.name.en} src={`${imgURL}${data.faction.image_path}`} /> {data.faction.name.en}</h2>
-      {data.outfit_member ? <Button href={`/outfit/${data.outfit_member.outfit.outfit_id}`} label={data.outfit_member.outfit.name} /> : null}
-      <h2>Creation date: {data.times.creation_date.split(' ')[0]}</h2>
+      <div>
+        <h1><img width="20" alt={data.main_class.name.en} src={`${imgURL}${data.main_class.image_path}`} />{data.name.first}</h1 >
+        <h2><img width="20" alt={data.faction.name.en} src={`${imgURL}${data.faction.image_path}`} /> {data.faction.name.en}</h2>
+        {data.outfit_member ? <Button href={`/outfit/${data.outfit_member.outfit.outfit_id}`} label={data.outfit_member.outfit.name} /> : null}
+        <h3>BR: {data.battle_rank.value}</h3>
+        {data.online_status === "1" ? <h3 className="displayOnline">Online</h3> : <h3 className="displayOffline">Offline</h3>}
+      </div>
+      <Box>
+        <CharacterTime {...data} />
+      </Box>
     </div>
     :
     <Loading />
