@@ -5,27 +5,26 @@ import { Button } from 'grommet';
 
 const CharacterPage = () => {
   const [data, setData] = React.useState(null);
-  const [loaded, setLoaded] = React.useState(false);
 
   const getCharData = async () => {
     try {
       const name = window.location.href.split('/')[4];
       const res = await fetch(`${backEndURL}/char/${name}`);
+      console.log('Fetch ran');
       if (res.ok) {
         const resData = await res.json();
+        await setData(resData.character_list[0]);
         console.log(resData);
-        setData(resData.character_list[0]);
       }
     } catch (err) {
       console.error(err);
     }
   }
 
-  if (!loaded) {
-    setLoaded(true);
+  React.useEffect(() => {
     getCharData();
-    console.log(data);
-  }
+  }, []);
+
   return (data ?
     <div>
       <h1><img width="20" alt={data.main_class.name.en} src={`${imgURL}${data.main_class.image_path}`} />{data.name.first}</h1 >

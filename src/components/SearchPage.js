@@ -7,10 +7,6 @@ const SearchPage = () => {
   const [results, setResults] = React.useState(null);
   const [selectValue, setSelectValue] = React.useState('Character');
 
-  useEffect(() => {
-
-  }, [results])
-
   const performSearch = async (e) => {
     try {
       if (e.keyCode === 13) {
@@ -115,8 +111,8 @@ const SearchPage = () => {
                   return null;
                 }
                 return (
-                  <Box className="outfitBox">
-                    <Button className="searchRes" key={outfit.outfit_id} href={`/outfit/${outfit.outfit_id}`} margin="medium" size="medium" label={`${outfit.alias}`} />
+                  <Box key={outfit.outfit_id} className="outfitBox">
+                    <Button className="searchRes" href={`/outfit/${outfit.outfit_id}`} margin="medium" size="medium" label={`${outfit.alias}`} />
                     <Paragraph>{outfit.name}</Paragraph>
                     <Paragraph>{`Created ${outfit.time_created_date.split(' ')[0]} with ${outfit.member_count} current members`}</Paragraph>
                   </Box>

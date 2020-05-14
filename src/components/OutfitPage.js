@@ -9,8 +9,6 @@ const OutfitPage = () => {
   const [data, setData] = React.useState(null);
   const [members, setMembers] = React.useState([]);
   const [factionMemberData, setFactionMemberData] = React.useState(null);
-  const [loadedOutfit, setLoadedOutfit] = React.useState(false);
-  const [loadedMemberData, setLoadedMemberData] = React.useState(false);
 
   const getOutfitData = async () => {
     try {
@@ -21,8 +19,8 @@ const OutfitPage = () => {
         setData(resData);
         console.log(resData);
         let unsortedMembers = resData.outfit_list[0].members.slice();
-        let convertedMembers = await formatMemData(unsortedMembers);
-        await sortMembers(convertedMembers, "online");
+        let convertedMembers = formatMemData(unsortedMembers);
+        sortMembers(convertedMembers, "online");
       }
     } catch (err) {
       console.error(err);
@@ -31,12 +29,18 @@ const OutfitPage = () => {
 
   const getMemberData = async () => {
     //no faction data in the outfit data. Get from first character in faction.
-    let randomMemberName = await members[0].name.first;
-    const factionData = await fetch(`${backEndURL}/char/${randomMemberName}`);
-    if (factionData.ok) {
-      const factionJson = await factionData.json();
-      await setFactionMemberData(factionJson.character_list[0]);
-      console.log(factionJson);
+    try {
+      if (members[0]) {
+        let randomMemberName = members[0].name.first;
+        const factionData = await fetch(`${backEndURL}/char/${randomMemberName}`);
+        if (factionData.ok) {
+          const factionJson = await factionData.json();
+          await setFactionMemberData(factionJson.character_list[0]);
+          console.log(factionJson);
+        }
+      }
+    } catch (err) {
+      console.error(err);
     }
   }
 
@@ -104,15 +108,13 @@ const OutfitPage = () => {
     setMembers(newMemberArr);
   }
 
-  if (!loadedOutfit) {
-    setLoadedOutfit(true);
+  React.useEffect(() => {
     getOutfitData();
-  }
+  }, []);
 
-  if (members.length > 0 && !loadedMemberData) {
-    setLoadedMemberData(true);
+  React.useEffect(() => {
     getMemberData();
-  }
+  }, [members])
 
   console.log(members);
   return (data && members && factionMemberData ?
@@ -134,10 +136,10 @@ const OutfitPage = () => {
           </TableRow>
           {members.map((member, idx) => {
             return (
-              <TableRow className="outfitTableRow">
+              <TableRow key={member.name.first} className="outfitTableRow">
                 <TableCell>{idx + 1}</TableCell>
                 <TableCell><img width="30" alt={member.main_class[0].name.en} src={`${imgURL}${member.main_class[0].image_path}`} /> {member.main_class[0].name.en}</TableCell>
-                <TableCell><Button key={member.name.first} label={member.name.first} href={`/char/${member.name.first}`} /></TableCell>
+                <TableCell><Button label={member.name.first} href={`/char/${member.name.first}`} /></TableCell>
                 <TableCell>{member.rank_ordinal}. {member.rank}</TableCell>
                 <TableCell>{member.battle_rank.value}</TableCell>
                 <TableCell>{member.kdr}</TableCell>

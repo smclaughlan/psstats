@@ -7,11 +7,9 @@ import Attribution from './Attribution';
 
 const FactionPage = () => {
   const [factionData, setFactionData] = React.useState(null);
-  const [loaded, setLoaded] = React.useState(false);
 
   const getFactionData = async () => {
     try {
-
       const result = await fetch(`${backEndURL}/factions/`);
       if (result.ok) {
         const resJson = await result.json();
@@ -23,10 +21,9 @@ const FactionPage = () => {
     }
   }
 
-  if (!loaded) {
-    setLoaded(true);
+  React.useEffect(() => {
     getFactionData();
-  }
+  })
 
   const getFactionDesc = factionName => { //Creative commons text from the wiki, since the API has no description text
     if (factionName === "Vanu Sovereignty") {

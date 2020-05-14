@@ -7,7 +7,6 @@ import Attribution from './Attribution';
 
 const ClassPage = () => {
   const [classData, setClassData] = React.useState(null);
-  const [loaded, setLoaded] = React.useState(false);
 
   const getClassData = async () => {
     try {
@@ -22,13 +21,10 @@ const ClassPage = () => {
     }
   }
 
-  if (!loaded) {
-    setLoaded(true);
+  React.useEffect(() => {
     getClassData();
-  }
-  //TODO attribute class descriptions and link to the planetside 2 wiki, creative commons attribution license
-  //example page with link https://planetside.fandom.com/wiki/MAX
-  //https://creativecommons.org/licenses/by-sa/3.0/
+  }, []);
+
   return (
     <Box>
       {classData ? classData.profile_list.map(profile => {

@@ -4,7 +4,6 @@ import { backEndURL, imgURL } from '../config';
 
 const VehiclePage = () => {
   const [vehData, setVehData] = React.useState(null);
-  const [loaded, setLoaded] = React.useState(false);
 
   const getVehData = async vehicle => {
     try {
@@ -19,10 +18,9 @@ const VehiclePage = () => {
     }
   }
 
-  if (!loaded) {
-    setLoaded(true);
+  React.useEffect(() => {
     getVehData();
-  }
+  }, [])
 
   return (
     <Box>

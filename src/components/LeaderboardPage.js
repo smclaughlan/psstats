@@ -7,7 +7,6 @@ const LeaderboardPage = () => {
   const [dataScore, setDataScore] = React.useState(null);
   const [dataTime, setDataTime] = React.useState(null);
   const [dataKills, setDataKills] = React.useState(null);
-  const [loaded, setLoaded] = React.useState(false);
 
   const timePlurality = (num, lengthSingular) => {
     if (num === 0) return "";
@@ -61,13 +60,11 @@ const LeaderboardPage = () => {
     }
   }
 
-  if (!loaded) {
-    setLoaded(true);
+  React.useEffect(() => {
     getLBData('Score');
     getLBData('Time');
     getLBData('Kills');
-    console.log(dataKills);
-  }
+  }, []);
 
   return (
     <>
@@ -78,8 +75,8 @@ const LeaderboardPage = () => {
           <h2>Score:</h2>
           {dataScore ? dataScore.leaderboard_list.map(character => {
             return (
-              <Box>
-                <Button className="searchRes" key={character.name.first} href={`/char/${character.name.first}`} margin="medium" label={`${Number.parseInt(character.rank) + 1}. ${character.name.first}`} size="medium" />
+              <Box key={character.name.first}>
+                <Button className="searchRes" href={`/char/${character.name.first}`} margin="medium" label={`${Number.parseInt(character.rank) + 1}. ${character.name.first}`} size="medium" />
                 <p>Score: {character.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} pts</p>
                 <p>Time played: {timeFormat(character.times.minutes_played)}</p>
               </Box>
@@ -92,8 +89,8 @@ const LeaderboardPage = () => {
           <h2>Play time:</h2>
           {dataTime ? dataTime.leaderboard_list.map(character => {
             return (
-              <Box>
-                <Button className="searchRes" key={character.name.first} href={`/char/${character.name.first}`} margin="medium" label={`${Number.parseInt(character.rank) + 1}. ${character.name.first}`} size="medium" />
+              <Box key={character.name.first}>
+                <Button className="searchRes" href={`/char/${character.name.first}`} margin="medium" label={`${Number.parseInt(character.rank) + 1}. ${character.name.first}`} size="medium" />
                 <p>Time played: {timeFormat(character.times.minutes_played)}</p>
               </Box>
             )
@@ -105,8 +102,8 @@ const LeaderboardPage = () => {
           <h2>Kills:</h2>
           {dataKills ? dataKills.leaderboard_list.map(character => {
             return (
-              <Box>
-                <Button className="searchRes" key={character.name.first} href={`/char/${character.name.first}`} margin="medium" label={`${Number.parseInt(character.rank) + 1}. ${character.name.first}`} size="medium" />
+              <Box key={character.name.first}>
+                <Button className="searchRes" href={`/char/${character.name.first}`} margin="medium" label={`${Number.parseInt(character.rank) + 1}. ${character.name.first}`} size="medium" />
                 <p>Kills: {character.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                 <p>Time played: {timeFormat(character.times.minutes_played)}</p>
               </Box>
