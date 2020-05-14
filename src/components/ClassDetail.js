@@ -65,14 +65,14 @@ const ClassDetail = ({ profile }) => {
 
 
   return (
-    <Box>
+    <Box className="basic-emphasis" align="center" margin="large" pad="large" animation="fadeIn">
       {profile ?
-        <div>
-          <img alt={profile.name.en} src={getImagePath(profile.name.en)} />
+        <>
           <h2>{profile.name.en}</h2>
           <img alt={profile.name.en} src={`${imgURL}${profile.image_path}`} />
+          <img alt={profile.name.en} src={getImagePath(profile.name.en)} />
           <h3>{createDesc(profile.name.en)}</h3>
-        </div>
+        </>
         :
         <Loading />}
     </Box >

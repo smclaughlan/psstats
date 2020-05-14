@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from 'grommet';
+import { Box, Tabs, Tab } from 'grommet';
 import { backEndURL } from '../config';
 import ClassDetail from './ClassDetail';
 import Loading from './Loading';
@@ -26,16 +26,23 @@ const ClassPage = () => {
   }, []);
 
   return (
-    <Box>
-      {classData ? classData.profile_list.map(profile => {
-        return (
-          <ClassDetail profile={profile} />
-        )
-      })
-        :
-        <Loading />}
-      <Attribution />
-    </Box >
+    <div>
+      <Box className="basic" alignSelf="center" width="900px" animation="fadeIn">
+        <h1>Classes</h1>
+        <Tabs>
+          {classData ? classData.profile_list.map(profile => {
+            return (
+              <Tab title={profile.name.en}>
+                <ClassDetail profile={profile} />
+              </Tab>
+            )
+          })
+            :
+            <Loading />}
+        </Tabs>
+        <Attribution />
+      </Box >
+    </div>
   )
 }
 
