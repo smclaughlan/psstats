@@ -1,7 +1,7 @@
 import React from 'react';
 import { backEndURL, imgURL } from '../config';
 import Loading from './Loading';
-import { Button, Box } from 'grommet';
+import { Button, Box, Tabs, Tab } from 'grommet';
 import CharacterTime from './CharacterTime';
 import CharacterCerts from './CharacterCerts';
 import CharacterGeneral from './CharacterGeneral';
@@ -31,20 +31,30 @@ const CharacterPage = () => {
   }, []);
 
   return (data ?
-    <div>
-      <div>
+    <div className="basic">
+      <Box animation="fadeIn" align="center">
         <h1><img width="20" alt={data.main_class.name.en} src={`${imgURL}${data.main_class.image_path}`} />{data.name.first}</h1 >
         <h2><img width="20" alt={data.faction.name.en} src={`${imgURL}${data.faction.image_path}`} /> {data.faction.name.en}</h2>
-        {data.outfit_member ? <Button href={`/outfit/${data.outfit_member.outfit.outfit_id}`} label={data.outfit_member.outfit.name} /> : null}
+        <div>
+          {data.outfit_member ? <Button href={`/outfit/${data.outfit_member.outfit.outfit_id}`} label={data.outfit_member.outfit.name} /> : null}
+        </div>
         <h3>BR: {data.battle_rank.value}</h3>
         {data.online_status === "1" ? <h3 className="displayOnline">Online</h3> : <h3 className="displayOffline">Offline</h3>}
-      </div>
-      <Box direction="row">
+      </Box>
+      <Box animation="fadeIn" className="basic" direction="row" justify="center">
         <CharacterTime {...data} />
         <CharacterCerts {...data} />
         <CharacterGeneral {...data} />
-        <CharacterClassScore {...data} />
-        <CharacterClassAccuracy {...data} />
+      </Box>
+      <Box animation="fadeIn" className="basic" align="center">
+        <Tabs>
+          <Tab title="Score per class">
+            <CharacterClassScore {...data} />
+          </Tab>
+          <Tab title="Accuracy per class">
+            <CharacterClassAccuracy {...data} />
+          </Tab>
+        </Tabs>
       </Box>
     </div>
     :

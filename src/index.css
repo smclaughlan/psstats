@@ -17,6 +17,11 @@ p {
   margin: 100px auto;
 }
 
+.basic {
+  padding: 10px;
+  margin: 30px auto;
+}
+
 .displayOnline {
   color: greenyellow;
 }

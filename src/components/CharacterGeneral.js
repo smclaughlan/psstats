@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from 'grommet';
+import { Box, Table, TableHeader, TableBody, TableRow, TableCell } from 'grommet';
 import Loading from './Loading';
 
 const CharacterGeneral = ({ main_class, stats, stats_history }) => {
@@ -34,16 +34,26 @@ const CharacterGeneral = ({ main_class, stats, stats_history }) => {
   return (main_class && stats && stats_history ?
     <Box>
       <h3>General stats</h3>
-      <p>Primary class:</p>
-      <p>{main_class.name.en}</p>
-      <p>Score:</p>
-      <p>{getScore(stats)} points</p>
-      <p>Kill/Death ratio:</p>
-      <p>{getKDR(stats_history[1].all_time, stats_history[0].all_time)}</p>
-      <p>Kills:</p>
-      <p>{stats_history[1].all_time.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
-      <p>Deaths:</p>
-      <p>{stats_history[0].all_time.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableCell><h4>Primary class</h4></TableCell>
+            <TableCell><h4>Score</h4></TableCell>
+            <TableCell><h4>Kill/Death ratio</h4></TableCell>
+            <TableCell><h4>Kills</h4></TableCell>
+            <TableCell><h4>Deaths</h4></TableCell>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableCell><p>{main_class.name.en}</p></TableCell>
+            <TableCell><p>{getScore(stats)} points</p></TableCell>
+            <TableCell><p>{getKDR(stats_history[1].all_time, stats_history[0].all_time)}</p></TableCell>
+            <TableCell><p>{stats_history[1].all_time.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></TableCell>
+            <TableCell><p>{stats_history[0].all_time.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
     </Box>
     :
     <Loading />)
