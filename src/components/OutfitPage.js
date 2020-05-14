@@ -127,32 +127,34 @@ const OutfitPage = () => {
         </Box>
         <img width="300" alt={factionMemberData.faction.name.en} src={`${imgURL}${factionMemberData.faction.image_path}`} />
       </Box>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableCell></TableCell>
-            <TableCell><Button label="Class" onClick={() => { sortMembers(members, "class") }} /></TableCell>
-            <TableCell><Button label="Name" onClick={() => { sortMembers(members, "name") }} /></TableCell>
-            <TableCell><Button label="Outfit Rank" onClick={() => { sortMembers(members, "outfitrank") }} /></TableCell>
-            <TableCell><Button label="Battle Rank" onClick={() => { sortMembers(members, "battlerank") }} /></TableCell>
-            <TableCell><Button label="Kill/Death Ratio" onClick={() => { sortMembers(members, "kdr") }} /></TableCell>
-            <TableCell><Button label="Online Status" onClick={() => { sortMembers(members, "online") }} /></TableCell>
-          </TableRow>
-          {members.map((member, idx) => {
-            return (
-              <TableRow key={member.name.first} className="outfitTableRow">
-                <TableCell>{idx + 1}</TableCell>
-                <TableCell><img width="30" alt={member.main_class[0].name.en} src={`${imgURL}${member.main_class[0].image_path}`} /> {member.main_class[0].name.en}</TableCell>
-                <TableCell><Button label={member.name.first} href={`/char/${member.name.first}`} /></TableCell>
-                <TableCell>{member.rank_ordinal}. {member.rank}</TableCell>
-                <TableCell>{member.battle_rank.value}</TableCell>
-                <TableCell>{member.kdr}</TableCell>
-                {member.online_status === "1" ? <TableCell className="displayOnline">Online</TableCell> : <TableCell className="displayOffline">Offline</TableCell>}
-              </TableRow>
-            )
-          })}
-        </TableHeader>
-      </Table>
+      <Box className="basic">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell><Button label="Class" onClick={() => { sortMembers(members, "class") }} /></TableCell>
+              <TableCell><Button label="Name" onClick={() => { sortMembers(members, "name") }} /></TableCell>
+              <TableCell><Button label="Outfit Rank" onClick={() => { sortMembers(members, "outfitrank") }} /></TableCell>
+              <TableCell><Button label="Battle Rank" onClick={() => { sortMembers(members, "battlerank") }} /></TableCell>
+              <TableCell><Button label="Kill/Death Ratio" onClick={() => { sortMembers(members, "kdr") }} /></TableCell>
+              <TableCell><Button label="Online Status" onClick={() => { sortMembers(members, "online") }} /></TableCell>
+            </TableRow>
+            {members.map((member, idx) => {
+              return (
+                <TableRow key={member.name.first} className="outfitTableRow">
+                  <TableCell>{idx + 1}</TableCell>
+                  <TableCell><img width="30" alt={member.main_class[0].name.en} src={`${imgURL}${member.main_class[0].image_path}`} /> {member.main_class[0].name.en}</TableCell>
+                  <TableCell><Button label={member.name.first} href={`/char/${member.name.first}`} /></TableCell>
+                  <TableCell>{member.rank_ordinal}. {member.rank}</TableCell>
+                  <TableCell>{member.battle_rank.value}</TableCell>
+                  <TableCell>{member.kdr}</TableCell>
+                  {member.online_status === "1" ? <TableCell className="displayOnline">Online</TableCell> : <TableCell className="displayOffline">Offline</TableCell>}
+                </TableRow>
+              )
+            })}
+          </TableHeader>
+        </Table>
+      </Box>
     </div>
     :
     <Loading />

@@ -69,26 +69,26 @@ const FactionPage = () => {
   }
 
   return (
-    <Box>
+    <Box className="factionbasic">
       {factionData ? factionData.faction_list.map(faction => {
         if (Number.parseInt(faction.faction_id) === 0) return null;
         return (
-          <>
-            <div>
+          <Box className="factionbasic">
+            <Box className="basic-emphasis" align="center">
               {faction.image_path ? <img width="100" alt={faction.name.en} src={`${imgURL}${faction.image_path}`} /> : null}
               <h1>{faction.name.en} ({faction.code_tag})</h1>
-            </div>
+            </Box>
             <Tabs>
               <Tab title="Description">
-                <Box>
+                <Box className="basic-emphasis">
                   <p>{getFactionDesc(faction.name.en)}</p>
                 </Box>
               </Tab>
               <Tab title="Video">
-                <ReactPlayer className="factionVideo" url={getFactionVid(faction.name.en)} controls={true} playing volume={0.1} />
+                <ReactPlayer className="factionVideo basic-emphasis" url={getFactionVid(faction.name.en)} controls={true} playing volume={0.1} />
               </Tab>
             </Tabs>
-          </>
+          </Box>
         )
       })
         :
