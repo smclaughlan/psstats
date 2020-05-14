@@ -32,7 +32,7 @@ const CharacterGeneral = ({ main_class, stats, stats_history }) => {
 
 
   return (main_class && stats && stats_history ?
-    <Box>
+    <Box margin="large">
       <h3>General stats</h3>
       <Table>
         <TableHeader>

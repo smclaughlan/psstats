@@ -1,7 +1,7 @@
 import React from 'react';
 import { backEndURL, imgURL } from '../config';
 import Loading from './Loading';
-import { Button, Box, Tabs, Tab } from 'grommet';
+import { Button, Box, Tabs, Tab, Carousel } from 'grommet';
 import CharacterTime from './CharacterTime';
 import CharacterCerts from './CharacterCerts';
 import CharacterGeneral from './CharacterGeneral';
@@ -41,10 +41,12 @@ const CharacterPage = () => {
         <h3>BR: {data.battle_rank.value}</h3>
         {data.online_status === "1" ? <h3 className="displayOnline">Online</h3> : <h3 className="displayOffline">Offline</h3>}
       </Box>
-      <Box animation="fadeIn" className="basic" direction="row" justify="center">
-        <CharacterTime {...data} />
-        <CharacterCerts {...data} />
-        <CharacterGeneral {...data} />
+      <Box animation="fadeIn" className="basic" align="center">
+        <Carousel fill margin="large" play={10000}>
+          <CharacterGeneral {...data} />
+          <CharacterTime {...data} />
+          <CharacterCerts {...data} />
+        </Carousel>
       </Box>
       <Box animation="fadeIn" className="basic" align="center">
         <Tabs>

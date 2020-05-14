@@ -18,8 +18,10 @@ p {
 }
 
 .basic {
-  padding: 10px;
+  padding: 30px;
   margin: 30px auto;
+  max-width: 980px;
+  box-shadow: 1px 1px 2px 2px green;
 }
 
 .displayOnline {

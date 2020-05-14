@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Table, TableHeader, TableRow, TableCell } from 'grommet';
+import { Box, Button, Table, TableHeader, TableRow, TableCell } from 'grommet';
 import { backEndURL, imgURL } from '../config';
 import Loading from './Loading';
 import sortArray from 'sort-array';
@@ -116,13 +116,17 @@ const OutfitPage = () => {
     getMemberData();
   }, [members])
 
-  console.log(members);
   return (data && members && factionMemberData ?
-    <div>
-      <h1><img width="30" alt={factionMemberData.faction.name.en} src={`${imgURL}${factionMemberData.faction.image_path}`} />{data.outfit_list[0].alias}</h1 >
-      <h2>{data.outfit_list[0].name}</h2>
-      <h3>Creation Date: {data.outfit_list[0].time_created_date.split(' ')[0]}</h3>
-      <h3>Member Count: {data.outfit_list[0].member_count}</h3>
+    <div className="basic">
+      <Box className="basic" direction="row" justify="evenly" animate="fadeIn">
+        <Box>
+          <h1>{data.outfit_list[0].alias}</h1 >
+          <h2>{data.outfit_list[0].name}</h2>
+          <h3>Creation Date: {data.outfit_list[0].time_created_date.split(' ')[0]}</h3>
+          <h3>Member Count: {data.outfit_list[0].member_count}</h3>
+        </Box>
+        <img width="300" alt={factionMemberData.faction.name.en} src={`${imgURL}${factionMemberData.faction.image_path}`} />
+      </Box>
       <Table>
         <TableHeader>
           <TableRow>
