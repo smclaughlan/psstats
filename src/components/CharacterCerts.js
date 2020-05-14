@@ -8,7 +8,7 @@ const CharacterCerts = ({ certs }) => {
     <Box>
       <h3>Certs</h3>
       <p>Total earned certs:</p>
-      <p>{certs.earned_points.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+      <p>{(Number.parseInt(certs.earned_points) + Number.parseInt(certs.gifted_points)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
       <p>Spent certs:</p>
       <p>{certs.spent_points.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
       <p>Available:</p>

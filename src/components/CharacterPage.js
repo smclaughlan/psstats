@@ -5,6 +5,8 @@ import { Button, Box } from 'grommet';
 import CharacterTime from './CharacterTime';
 import CharacterCerts from './CharacterCerts';
 import CharacterGeneral from './CharacterGeneral';
+import CharacterClassScore from './CharacterClassScore';
+import CharacterClassAccuracy from './CharacterClassAccuracy';
 
 const CharacterPage = () => {
   const [data, setData] = React.useState(null);
@@ -41,6 +43,8 @@ const CharacterPage = () => {
         <CharacterTime {...data} />
         <CharacterCerts {...data} />
         <CharacterGeneral {...data} />
+        <CharacterClassScore {...data} />
+        <CharacterClassAccuracy {...data} />
       </Box>
     </div>
     :
