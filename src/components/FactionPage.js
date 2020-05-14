@@ -69,18 +69,18 @@ const FactionPage = () => {
   }
 
   return (
-    <Box className="factionbasic">
+    <Box className="factionbasic" animation="fadeIn">
       {factionData ? factionData.faction_list.map(faction => {
         if (Number.parseInt(faction.faction_id) === 0) return null;
         return (
-          <Box className="factionbasic">
-            <Box className="basic-emphasis" align="center">
+          <Box className="factionbasic" animation="fadeIn">
+            <Box className="basic-emphasis" align="center" animation="fadeIn">
               {faction.image_path ? <img width="100" alt={faction.name.en} src={`${imgURL}${faction.image_path}`} /> : null}
               <h1>{faction.name.en} ({faction.code_tag})</h1>
             </Box>
             <Tabs>
               <Tab title="Description">
-                <Box className="basic-emphasis">
+                <Box className="basic-emphasis" animation="fadeIn">
                   <p>{getFactionDesc(faction.name.en)}</p>
                 </Box>
               </Tab>
