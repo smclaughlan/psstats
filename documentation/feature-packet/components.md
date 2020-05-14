@@ -4,15 +4,16 @@
 * HomePage
   * Describes and links to other pages
 * SearchPage
-* CharacterCard
-* GroupCard
-* GroupPage
+* OutfitPage
 * CharacterPage
+  * CharacterCerts
+  * CharacterClassAccuracy
+  * CharacterClassScore
+  * CharacterGeneral
+  * CharacterTime
 * LeaderboardPage
-* LeaderboardDetail
 * ClassPage
 * ClassDetail
 * VehiclePage
-* VehicleDetail
 * FactionPage
 * FactionDetail
