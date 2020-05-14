@@ -10,11 +10,16 @@ const FactionPage = () => {
   const [loaded, setLoaded] = React.useState(false);
 
   const getFactionData = async () => {
-    const result = await fetch(`${backEndURL}/factions/`);
-    if (result.ok) {
-      const resJson = await result.json();
-      console.log("ResJson", resJson);
-      setFactionData(resJson);
+    try {
+
+      const result = await fetch(`${backEndURL}/factions/`);
+      if (result.ok) {
+        const resJson = await result.json();
+        console.log("ResJson", resJson);
+        setFactionData(resJson);
+      }
+    } catch (err) {
+      console.error(err);
     }
   }
 

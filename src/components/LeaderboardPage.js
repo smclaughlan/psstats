@@ -46,14 +46,18 @@ const LeaderboardPage = () => {
   }
 
   const getLBData = async (type) => {
-    const res = await fetch(`${backEndURL}/leaderboard/${type}`);
-    console.log(res);
-    if (res.ok) {
-      const resData = await res.json();
-      console.log(resData);
-      if (type === 'Score') setDataScore(resData);
-      if (type === 'Time') setDataTime(resData);
-      if (type === 'Kills') setDataKills(resData);
+    try {
+      const res = await fetch(`${backEndURL}/leaderboard/${type}`);
+      console.log(res);
+      if (res.ok) {
+        const resData = await res.json();
+        console.log(resData);
+        if (type === 'Score') setDataScore(resData);
+        if (type === 'Time') setDataTime(resData);
+        if (type === 'Kills') setDataKills(resData);
+      }
+    } catch (err) {
+      console.error(err);
     }
   }
 

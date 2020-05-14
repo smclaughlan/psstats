@@ -12,21 +12,25 @@ const SearchPage = () => {
   }, [results])
 
   const performSearch = async (e) => {
-    if (e.keyCode === 13) {
-      if (selectValue === 'Character') {
-        const res = await fetch(`${backEndURL}/chars/${value.toLowerCase()}`);
-        if (res.ok) {
-          const resJson = await res.json();
-          setResults(resJson);
+    try {
+      if (e.keyCode === 13) {
+        if (selectValue === 'Character') {
+          const res = await fetch(`${backEndURL}/chars/${value.toLowerCase()}`);
+          if (res.ok) {
+            const resJson = await res.json();
+            setResults(resJson);
+          }
+        }
+        if (selectValue === 'Outfit') {
+          const res = await fetch(`${backEndURL}/outfits/${value}`);
+          if (res.ok) {
+            const resJson = await res.json();
+            setResults(resJson);
+          }
         }
       }
-      if (selectValue === 'Outfit') {
-        const res = await fetch(`${backEndURL}/outfits/${value}`);
-        if (res.ok) {
-          const resJson = await res.json();
-          setResults(resJson);
-        }
-      }
+    } catch (err) {
+      console.error(err);
     }
   }
 

@@ -7,11 +7,15 @@ const VehiclePage = () => {
   const [loaded, setLoaded] = React.useState(false);
 
   const getVehData = async vehicle => {
-    const result = await fetch(`${backEndURL}/vehicles/`);
-    if (result.ok) {
-      const resJson = await result.json();
-      console.log("ResJson", resJson);
-      setVehData(resJson);
+    try {
+      const result = await fetch(`${backEndURL}/vehicles/`);
+      if (result.ok) {
+        const resJson = await result.json();
+        console.log("ResJson", resJson);
+        setVehData(resJson);
+      }
+    } catch (err) {
+      console.error(err);
     }
   }
 

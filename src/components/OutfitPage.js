@@ -13,15 +13,19 @@ const OutfitPage = () => {
   const [loadedMemberData, setLoadedMemberData] = React.useState(false);
 
   const getOutfitData = async () => {
-    let outfitId = window.location.href.split('/')[4];
-    const res = await fetch(`${backEndURL}/outfit/${outfitId}`);
-    if (res.ok) {
-      const resData = await res.json();
-      setData(resData);
-      console.log(resData);
-      let unsortedMembers = resData.outfit_list[0].members.slice();
-      let convertedMembers = await formatMemData(unsortedMembers);
-      await sortMembers(convertedMembers, "online");
+    try {
+      let outfitId = window.location.href.split('/')[4];
+      const res = await fetch(`${backEndURL}/outfit/${outfitId}`);
+      if (res.ok) {
+        const resData = await res.json();
+        setData(resData);
+        console.log(resData);
+        let unsortedMembers = resData.outfit_list[0].members.slice();
+        let convertedMembers = await formatMemData(unsortedMembers);
+        await sortMembers(convertedMembers, "online");
+      }
+    } catch (err) {
+      console.error(err);
     }
   }
 

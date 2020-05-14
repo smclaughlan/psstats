@@ -10,11 +10,15 @@ const ClassPage = () => {
   const [loaded, setLoaded] = React.useState(false);
 
   const getClassData = async () => {
-    const result = await fetch(`${backEndURL}/classes/`);
-    if (result.ok) {
-      const resJson = await result.json();
-      console.log("ResJson", resJson);
-      setClassData(resJson);
+    try {
+      const result = await fetch(`${backEndURL}/classes/`);
+      if (result.ok) {
+        const resJson = await result.json();
+        console.log("ResJson", resJson);
+        setClassData(resJson);
+      }
+    } catch (err) {
+      console.error(err);
     }
   }
 
