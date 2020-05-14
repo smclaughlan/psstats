@@ -1,8 +1,10 @@
 import React from 'react';
 import { backEndURL, imgURL } from '../config';
 import Loading from './Loading';
-import CharacterTime from './CharacterTime';
 import { Button, Box } from 'grommet';
+import CharacterTime from './CharacterTime';
+import CharacterCerts from './CharacterCerts';
+import CharacterGeneral from './CharacterGeneral';
 
 const CharacterPage = () => {
   const [data, setData] = React.useState(null);
@@ -35,8 +37,10 @@ const CharacterPage = () => {
         <h3>BR: {data.battle_rank.value}</h3>
         {data.online_status === "1" ? <h3 className="displayOnline">Online</h3> : <h3 className="displayOffline">Offline</h3>}
       </div>
-      <Box>
+      <Box direction="row">
         <CharacterTime {...data} />
+        <CharacterCerts {...data} />
+        <CharacterGeneral {...data} />
       </Box>
     </div>
     :
