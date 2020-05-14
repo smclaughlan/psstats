@@ -137,7 +137,7 @@ const OutfitPage = () => {
                 <TableCell>{member.rank_ordinal}. {member.rank}</TableCell>
                 <TableCell>{member.battle_rank.value}</TableCell>
                 <TableCell>{member.kdr}</TableCell>
-                <TableCell className="displayOnline">{member.online_status === "1" ? "--- ONLINE ---" : " "}</TableCell>
+                {member.online_status === "1" ? <TableCell className="displayOnline">Online</TableCell> : <TableCell className="displayOffline">Offline</TableCell>}
               </TableRow>
             )
           })}

@@ -17,8 +17,12 @@ p {
   margin: 100px auto;
 }
 
-.displayOnline{
+.displayOnline {
   color: greenyellow;
+}
+
+.displayOffline {
+  color: green;
 }
 
 .factionVideo {
