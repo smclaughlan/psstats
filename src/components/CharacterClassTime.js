@@ -18,7 +18,6 @@ const CharacterClassTime = (dataId) => {
   React.useEffect(() => {
     const getPlayTimes = () => {
       let times = []; //array of objects for datatable
-      console.log(dataId);
       dataId.stats.stat.forEach(s => {
         if (s.stat_name === "play_time") {
           let profileName = "";
@@ -32,7 +31,6 @@ const CharacterClassTime = (dataId) => {
         }
       })
       setPlayTimes(times);
-      console.log(playTimes);
     }
     getPlayTimes();
   }, []);

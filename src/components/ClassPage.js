@@ -13,7 +13,6 @@ const ClassPage = () => {
       const result = await fetch(`${backEndURL}/classes/`);
       if (result.ok) {
         const resJson = await result.json();
-        console.log("ResJson", resJson);
         setClassData(resJson);
       }
     } catch (err) {

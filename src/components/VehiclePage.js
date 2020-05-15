@@ -10,7 +10,6 @@ const VehiclePage = () => {
       const result = await fetch(`${backEndURL}/vehicles/`);
       if (result.ok) {
         const resJson = await result.json();
-        console.log("ResJson", resJson);
         setVehData(resJson);
       }
     } catch (err) {

@@ -4,7 +4,6 @@ import Loading from './Loading';
 import { timeFormat, commaFormat } from './util';
 
 const CharacterTime = ({ times }) => {
-  console.log(times);
 
   return (times ?
     <Box margin="large">

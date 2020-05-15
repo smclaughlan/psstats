@@ -13,7 +13,6 @@ const FactionPage = () => {
       const result = await fetch(`${backEndURL}/factions/`);
       if (result.ok) {
         const resJson = await result.json();
-        console.log("ResJson", resJson);
         setFactionData(resJson);
       }
     } catch (err) {

@@ -21,7 +21,6 @@ const CharacterPage = () => {
       if (res.ok) {
         const resData = await res.json();
         await setData(resData.character_list[0]);
-        console.log("data", resData);
       }
     } catch (err) {
       console.error(err);
@@ -41,10 +40,9 @@ const CharacterPage = () => {
           if (charIdRes.ok) {
             const charIdData = await charIdRes.json();
             setDataId(charIdData.character_list[0]);
-            console.log("dataId", charIdData);
           }
         } catch (err) {
-          console.log(err);
+          console.error(err);
         }
       }
     }

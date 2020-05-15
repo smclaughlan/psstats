@@ -17,7 +17,6 @@ const OutfitPage = () => {
       if (res.ok) {
         const resData = await res.json();
         setData(resData);
-        console.log(resData);
         let unsortedMembers = resData.outfit_list[0].members.slice();
         let convertedMembers = formatMemData(unsortedMembers);
         sortMembers(convertedMembers, "online");
@@ -36,7 +35,6 @@ const OutfitPage = () => {
         if (factionData.ok) {
           const factionJson = await factionData.json();
           await setFactionMemberData(factionJson.character_list[0]);
-          console.log(factionJson);
         }
       }
     } catch (err) {

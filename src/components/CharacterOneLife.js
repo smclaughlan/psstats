@@ -16,7 +16,6 @@ const CharacterOneLife = ({ main_class, stats, stats_history, dataId }) => {
   }
 
   React.useEffect(() => {
-    console.log(dataId);
     getRecords();
   }, [])
 
