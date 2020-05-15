@@ -6,14 +6,18 @@ const CharacterClassAccuracy = ({ stats }) => {
 
   const getChartData = stats => {
     let chartData = [];
-    stats.forEach((stat, idx) => {
+    stats.forEach((stat) => {
       if (stat.stat_name === "hit_count") {
-        let idxOfFireCount = idx - 6;
-        chartData.push({
-          name: stat.class.name.en,
-          percent: Number.parseInt(stat.value_forever) / Number.parseInt(stats[idxOfFireCount].value_forever) * 100,
-          percentStr: `${Math.floor((Number.parseInt(stat.value_forever) / Number.parseInt(stats[idxOfFireCount].value_forever) * 100))}%`,
-        });
+        let profileNum = stat.profile_id;
+        stats.forEach(fireStat => {
+          if (fireStat.stat_name === "fire_count" && fireStat.profile_id === profileNum) {
+            chartData.push({
+              name: stat.class.name.en,
+              percent: Number.parseInt(stat.value_forever) / Number.parseInt(fireStat.value_forever) * 100,
+              percentStr: `${Math.floor((Number.parseInt(stat.value_forever) / Number.parseInt(fireStat.value_forever) * 100))}%`,
+            });
+          }
+        })
       }
     })
     return chartData;
