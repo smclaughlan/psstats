@@ -8,7 +8,9 @@
     "@testing-library/user-event": "^7.2.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-favicon": "^2.0.1",
     "grommet": "^2.13.0",
+    "path": "^0.12.7",
     "polished": "^3.6.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -22,7 +24,7 @@
     "styled-components": "^5.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
