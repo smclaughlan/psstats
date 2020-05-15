@@ -5,16 +5,6 @@ import { commaFormat } from './util.js';
 
 const CharacterClassScore = ({ stats }) => {
 
-  const getScore = statsArr => {
-    let totalScore = 0;
-    statsArr.forEach(stat => {
-      if (stat.stat_name === "score") {
-        totalScore += Number.parseInt(stat.value_forever);
-      }
-    })
-    return commaFormat(totalScore);
-  }
-
   const getChartData = stats => {
     let chartData = [];
     stats.forEach(stat => {

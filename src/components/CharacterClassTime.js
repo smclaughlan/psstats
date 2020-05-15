@@ -35,7 +35,7 @@ const CharacterClassTime = (dataId) => {
       console.log(playTimes);
     }
     getPlayTimes();
-  }, [])
+  }, []);
 
   return (playTimes ?
     <Box>

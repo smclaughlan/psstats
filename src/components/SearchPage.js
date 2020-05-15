@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { TextInput, Heading, Paragraph, Main, Box, Button, Select } from 'grommet';
 import { backEndURL } from '../config';
 

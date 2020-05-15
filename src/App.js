@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Box } from 'grommet';
 import NavBar from './components/NavBar';
 import HomePage from './components/HomePage';
 import SearchPage from './components/SearchPage';
