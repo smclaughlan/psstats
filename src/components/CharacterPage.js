@@ -7,6 +7,7 @@ import CharacterCerts from './CharacterCerts';
 import CharacterGeneral from './CharacterGeneral';
 import CharacterClassScore from './CharacterClassScore';
 import CharacterClassAccuracy from './CharacterClassAccuracy';
+import CharacterOneLife from './CharacterOneLife';
 
 const CharacterPage = () => {
   const [data, setData] = React.useState(null);
@@ -65,6 +66,9 @@ const CharacterPage = () => {
         <Tabs>
           <Tab title="General">
             <CharacterGeneral dataId={dataId} {...data} />
+          </Tab>
+          <Tab title="One life records">
+            <CharacterOneLife dataId={dataId} {...data} />
           </Tab>
           <Tab title="Time">
             <CharacterTime {...data} />
