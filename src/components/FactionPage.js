@@ -23,7 +23,7 @@ const FactionPage = () => {
 
   React.useEffect(() => {
     getFactionData();
-  })
+  }, []);
 
   const getFactionDesc = factionName => { //Creative commons text from the wiki, since the API has no description text
     if (factionName === "Vanu Sovereignty") {
