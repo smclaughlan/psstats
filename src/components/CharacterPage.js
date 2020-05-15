@@ -8,6 +8,7 @@ import CharacterGeneral from './CharacterGeneral';
 import CharacterClassScore from './CharacterClassScore';
 import CharacterClassAccuracy from './CharacterClassAccuracy';
 import CharacterOneLife from './CharacterOneLife';
+import CharacterClassTime from './CharacterClassTime';
 
 const CharacterPage = () => {
   const [data, setData] = React.useState(null);
@@ -85,6 +86,9 @@ const CharacterPage = () => {
           </Tab>
           <Tab title="Accuracy per class">
             <CharacterClassAccuracy {...data} />
+          </Tab>
+          <Tab title="Relative time per class">
+            <CharacterClassTime {...dataId} />
           </Tab>
         </Tabs>
       </Box>
