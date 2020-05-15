@@ -10,19 +10,35 @@ import CharacterClassAccuracy from './CharacterClassAccuracy';
 
 const CharacterPage = () => {
   const [data, setData] = React.useState(null);
+  const [dataId, setDataId] = React.useState(null);
 
   const getCharData = async () => {
     try {
       const name = window.location.href.split('/')[4];
       const res = await fetch(`${backEndURL}/char/${name}`);
-      console.log('Fetch ran');
       if (res.ok) {
         const resData = await res.json();
         await setData(resData.character_list[0]);
-        console.log(resData);
+        console.log("data", resData);
       }
     } catch (err) {
       console.error(err);
+    }
+  }
+
+  const getCharIdData = async () => {
+    if (data) {
+      try {
+        const charId = data.character_id;
+        const charIdRes = await fetch(`${backEndURL}/charid/${charId}`);
+        if (charIdRes.ok) {
+          const charIdData = await charIdRes.json();
+          setDataId(charIdData.character_list[0]);
+          console.log("dataId", charIdData);
+        }
+      } catch (err) {
+        console.log(err);
+      }
     }
   }
 
@@ -30,7 +46,11 @@ const CharacterPage = () => {
     getCharData();
   }, []);
 
-  return (data ?
+  React.useEffect(() => {
+    getCharIdData();
+  }, [data]);
+
+  return (data && dataId ?
     <div className="basic">
       <Box animation="fadeIn" align="center">
         <h1><img width="20" alt={data.main_class.name.en} src={`${imgURL}${data.main_class.image_path}`} />{data.name.first}</h1 >
@@ -44,7 +64,7 @@ const CharacterPage = () => {
       <Box animation="fadeIn" className="basic" align="center">
         <Tabs>
           <Tab title="General">
-            <CharacterGeneral {...data} />
+            <CharacterGeneral dataId={dataId} {...data} />
           </Tab>
           <Tab title="Time">
             <CharacterTime {...data} />

@@ -2,7 +2,7 @@ import React from 'react';
 import { backEndURL } from '../config';
 import { Box, Button } from 'grommet';
 import Loading from './Loading';
-import { timeFormat } from './util';
+import { timeFormat, commaFormat } from './util';
 
 const LeaderboardPage = () => {
   const [dataScore, setDataScore] = React.useState(null);
@@ -44,7 +44,7 @@ const LeaderboardPage = () => {
             return (
               <Box key={character.name.first}>
                 <Button className="searchRes" href={`/char/${character.name.first}`} margin="medium" label={`${Number.parseInt(character.rank) + 1}. ${character.name.first}`} size="medium" />
-                <p>Score: {character.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} pts</p>
+                <p>Score: {commaFormat(character.value)} pts</p>
                 <p>Time played: {timeFormat(character.times.minutes_played)}</p>
               </Box>
             )
@@ -71,7 +71,7 @@ const LeaderboardPage = () => {
             return (
               <Box key={character.name.first}>
                 <Button className="searchRes" href={`/char/${character.name.first}`} margin="medium" label={`${Number.parseInt(character.rank) + 1}. ${character.name.first}`} size="medium" />
-                <p>Kills: {character.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                <p>Kills: {commaFormat(character.value)}</p>
                 <p>Time played: {timeFormat(character.times.minutes_played)}</p>
               </Box>
             )

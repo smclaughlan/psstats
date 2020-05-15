@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Table, TableHeader, TableBody, TableRow, TableCell } from 'grommet';
 import Loading from './Loading';
-import { timeFormat } from './util';
+import { timeFormat, commaFormat } from './util';
 
 const CharacterTime = ({ times }) => {
   console.log(times);
@@ -22,7 +22,7 @@ const CharacterTime = ({ times }) => {
           <TableRow>
             <TableCell><p>{times.creation_date.split(' ')[0]}</p></TableCell>
             <TableCell><p>{times.last_login_date.split(' ')[0]}</p></TableCell>
-            <TableCell><p>{times.login_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></TableCell>
+            <TableCell><p>{commaFormat(times.login_count)}</p></TableCell>
             <TableCell><p>{timeFormat(times.minutes_played)}</p></TableCell>
           </TableRow>
         </TableBody>

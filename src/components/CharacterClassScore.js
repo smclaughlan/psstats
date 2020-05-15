@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, DataTable, Meter } from 'grommet';
 import Loading from './Loading';
+import { commaFormat } from './util.js';
 
 const CharacterClassScore = ({ stats }) => {
 
@@ -11,14 +12,14 @@ const CharacterClassScore = ({ stats }) => {
         totalScore += Number.parseInt(stat.value_forever);
       }
     })
-    return totalScore.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return commaFormat(totalScore);
   }
 
   const getChartData = stats => {
     let chartData = [];
     stats.forEach(stat => {
       if (stat.stat_name === "score") {
-        chartData.push({ name: stat.class.name.en, value: Number.parseInt(stat.value_forever), valueWithCommas: stat.value_forever.replace(/\B(?=(\d{3})+(?!\d))/g, ",") });
+        chartData.push({ name: stat.class.name.en, value: Number.parseInt(stat.value_forever), valueWithCommas: commaFormat(stat.value_forever) });
       }
     })
     return chartData;

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Box, Table, TableHeader, TableBody, TableRow, TableCell } from 'grommet';
 import Loading from './Loading';
+import { commaFormat } from './util.js';
 
-const CharacterGeneral = ({ main_class, stats, stats_history }) => {
+const CharacterGeneral = ({ main_class, stats, stats_history, dataId }) => {
 
   const getKDR = (kills, deaths) => {
     let tempKDR = (parseInt(kills) / parseInt(deaths)).toString();
@@ -27,11 +28,31 @@ const CharacterGeneral = ({ main_class, stats, stats_history }) => {
         totalScore += Number.parseInt(stat.value_forever);
       }
     })
-    return totalScore.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return commaFormat(totalScore);
+  }
+
+  const getFacilityCaptures = statsArr => {
+    let retStat = 0;
+    statsArr.forEach(stat => {
+      if (stat.stat_name === "facility_capture") {
+        retStat = commaFormat(stat.all_time);
+      }
+    })
+    return retStat;
+  }
+
+  const getFacilityDefenses = statsArr => {
+    let retStat = 0;
+    statsArr.forEach(stat => {
+      if (stat.stat_name === "facility_defend") {
+        retStat = commaFormat(stat.all_time);
+      }
+    })
+    return retStat;
   }
 
 
-  return (main_class && stats && stats_history ?
+  return (main_class && stats && stats_history && dataId ?
     <Box margin="large">
       <h3>General stats</h3>
       <Table>
@@ -42,6 +63,8 @@ const CharacterGeneral = ({ main_class, stats, stats_history }) => {
             <TableCell><h4>Kill/Death ratio</h4></TableCell>
             <TableCell><h4>Kills</h4></TableCell>
             <TableCell><h4>Deaths</h4></TableCell>
+            <TableCell><h4>Facility captures</h4></TableCell>
+            <TableCell><h4>Facility defenses</h4></TableCell>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -49,8 +72,10 @@ const CharacterGeneral = ({ main_class, stats, stats_history }) => {
             <TableCell><p>{main_class.name.en}</p></TableCell>
             <TableCell><p>{getScore(stats)} points</p></TableCell>
             <TableCell><p>{getKDR(stats_history[1].all_time, stats_history[0].all_time)}</p></TableCell>
-            <TableCell><p>{stats_history[1].all_time.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></TableCell>
-            <TableCell><p>{stats_history[0].all_time.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></TableCell>
+            <TableCell><p>{commaFormat(stats_history[1].all_time)}</p></TableCell>
+            <TableCell><p>{commaFormat(stats_history[0].all_time)}</p></TableCell>
+            <TableCell><p>{getFacilityCaptures(dataId.stats.stat_history)}</p></TableCell>
+            <TableCell><p>{getFacilityDefenses(dataId.stats.stat_history)}</p></TableCell>
           </TableRow>
         </TableBody>
       </Table>

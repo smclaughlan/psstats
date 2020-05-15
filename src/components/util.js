@@ -41,3 +41,7 @@ export const timeFormat = minutes => {
   }
   return `${minutesRemaining} minutes`;
 }
+
+export const commaFormat = (stringNum) => {
+  return stringNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
