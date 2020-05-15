@@ -1,7 +1,7 @@
 import React from 'react';
 import { backEndURL, imgURL } from '../config';
 import Loading from './Loading';
-import { Button, Box, Tabs, Tab, Carousel } from 'grommet';
+import { Button, Box, Tabs, Tab } from 'grommet';
 import CharacterTime from './CharacterTime';
 import CharacterCerts from './CharacterCerts';
 import CharacterGeneral from './CharacterGeneral';
@@ -28,27 +28,26 @@ const CharacterPage = () => {
     }
   }
 
-  const getCharIdData = async () => {
-    if (data) {
-      try {
-        const charId = data.character_id;
-        const charIdRes = await fetch(`${backEndURL}/charid/${charId}`);
-        if (charIdRes.ok) {
-          const charIdData = await charIdRes.json();
-          setDataId(charIdData.character_list[0]);
-          console.log("dataId", charIdData);
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  }
-
   React.useEffect(() => {
     getCharData();
   }, []);
 
   React.useEffect(() => {
+    const getCharIdData = async () => {
+      if (data) {
+        try {
+          const charId = data.character_id;
+          const charIdRes = await fetch(`${backEndURL}/charid/${charId}`);
+          if (charIdRes.ok) {
+            const charIdData = await charIdRes.json();
+            setDataId(charIdData.character_list[0]);
+            console.log("dataId", charIdData);
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    }
     getCharIdData();
   }, [data]);
 
