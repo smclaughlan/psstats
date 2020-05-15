@@ -33,10 +33,12 @@ const LeaderboardPage = () => {
 
   return (
     <>
-      <h1>Leaderboards</h1>
-      <h3>View the highest ranking characters by category</h3>
-      <Box direction="row">
-        <Box>
+      <Box className="basic" animation="fadeIn">
+        <h1>Leaderboards</h1>
+        <h3>View the highest ranking characters by category</h3>
+      </Box>
+      <Box direction="row" animation="fadeIn">
+        <Box className="basic">
           <h2>Score:</h2>
           {dataScore ? dataScore.leaderboard_list.map(character => {
             return (
@@ -50,7 +52,7 @@ const LeaderboardPage = () => {
             :
             <Loading />}
         </Box>
-        <Box>
+        <Box className="basic">
           <h2>Play time:</h2>
           {dataTime ? dataTime.leaderboard_list.map(character => {
             return (
@@ -63,7 +65,7 @@ const LeaderboardPage = () => {
             :
             <Loading />}
         </Box>
-        <Box>
+        <Box className="basic">
           <h2>Kills:</h2>
           {dataKills ? dataKills.leaderboard_list.map(character => {
             return (

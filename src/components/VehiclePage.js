@@ -23,13 +23,16 @@ const VehiclePage = () => {
   }, [])
 
   return (
-    <Box>
+    <Box className="basic" animation="fadeIn">
+      <div className="basic">
+        <h1>Vehicles</h1>
+      </div>
       {vehData ? vehData.vehicle_list.map(vehicle => {
         return (
-          <div>
+          <div className="basic">
+            <img alt={vehicle.name.en} src={`${imgURL}${vehicle.image_path}`} />
             <h2 key={vehicle.vehicle_id}>{vehicle.name.en}</h2>
             <h3>{vehicle.description.en}</h3>
-            <img alt={vehicle.name.en} src={`${imgURL}${vehicle.image_path}`} />
           </div>
         )
       })

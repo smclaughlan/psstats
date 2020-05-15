@@ -33,11 +33,11 @@ const SearchPage = () => {
   if (!results) {
     return (
       <Main>
-        <Box className="basic">
+        <Box className="basic" animation="fadeIn">
           <Heading>Search</Heading>
           <Paragraph>By character or by outfit</Paragraph>
         </Box>
-        <Box className="basic">
+        <Box className="basic" animation="fadeIn">
           <div className="searchInputs">
             <TextInput
               placeholder="Enter search term here"
@@ -59,11 +59,11 @@ const SearchPage = () => {
   if ("errorCode" in results) {
     return (
       <Main>
-        <Box className="basic">
+        <Box className="basic" animation="fadeIn">
           <Heading>Search</Heading>
           <Paragraph>By character or by outfit</Paragraph>
         </Box>
-        <Box className="basic">
+        <Box className="basic" animation="fadeIn">
           <Paragraph>Error! {results.errorMessage}</Paragraph>
           <div className="searchInputs">
             <TextInput
@@ -85,11 +85,11 @@ const SearchPage = () => {
 
   return (
     <Main>
-      <Box className="basic">
+      <Box className="basic" animation="fadeIn">
         <Heading>Search</Heading>
         <Paragraph>By character or by outfit</Paragraph>
       </Box>
-      <Box className="basic">
+      <Box className="basic" animation="fadeIn">
         <div className="searchInputs">
           <TextInput
             placeholder="Enter search term here"
@@ -104,7 +104,7 @@ const SearchPage = () => {
           />
         </div>
         <div className="searchResContainer">
-          <Box className="basic" direction="row" justify="evenly" alignContent="center" wrap={true}>
+          <Box className="basic" direction="row" justify="evenly" alignContent="center" wrap={true} animation="fadeIn">
             {"character_name_list" in results ?
               results.character_name_list.map(character => {
                 return (

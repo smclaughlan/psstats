@@ -118,7 +118,7 @@ const OutfitPage = () => {
 
   return (data && members && factionMemberData ?
     <div className="basic">
-      <Box className="basic" direction="row" justify="evenly" animate="fadeIn">
+      <Box className="basic" direction="row" justify="evenly" animation="fadeIn">
         <Box>
           <h1>{data.outfit_list[0].alias}</h1 >
           <h2>{data.outfit_list[0].name}</h2>
@@ -127,7 +127,7 @@ const OutfitPage = () => {
         </Box>
         <img width="300" alt={factionMemberData.faction.name.en} src={`${imgURL}${factionMemberData.faction.image_path}`} />
       </Box>
-      <Box className="basic">
+      <Box className="basic" animation="fadeIn">
         <Table>
           <TableHeader>
             <TableRow>

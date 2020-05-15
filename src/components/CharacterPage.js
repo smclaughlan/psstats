@@ -42,11 +42,17 @@ const CharacterPage = () => {
         {data.online_status === "1" ? <h3 className="displayOnline">Online</h3> : <h3 className="displayOffline">Offline</h3>}
       </Box>
       <Box animation="fadeIn" className="basic" align="center">
-        <Carousel fill margin="large" play={10000}>
-          <CharacterGeneral {...data} />
-          <CharacterTime {...data} />
-          <CharacterCerts {...data} />
-        </Carousel>
+        <Tabs>
+          <Tab title="General">
+            <CharacterGeneral {...data} />
+          </Tab>
+          <Tab title="Time">
+            <CharacterTime {...data} />
+          </Tab>
+          <Tab title="Certs">
+            <CharacterCerts {...data} />
+          </Tab>
+        </Tabs>
       </Box>
       <Box animation="fadeIn" className="basic" align="center">
         <Tabs>
