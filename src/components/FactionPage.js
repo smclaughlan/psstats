@@ -69,6 +69,7 @@ const FactionPage = () => {
 
   return (
     <Box className="factionbasic" animation="fadeIn">
+      <h1>Factions</h1>
       {factionData ? factionData.faction_list.map(faction => {
         if (Number.parseInt(faction.faction_id) === 0) return null;
         return (

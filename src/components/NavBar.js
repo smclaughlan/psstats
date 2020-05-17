@@ -20,9 +20,10 @@ const NavBar = () => {
       >
         <i className="fas fa-bars"></i>
       </DropButton>
-      <Anchor href="/search" color="light-2">
+      <Anchor href="/search" color="light-2" margin="medium">
         <i className="fas fa-search"></i>
       </Anchor>
+      <h2>PlanetSide Stats</h2>
     </Nav>
   )
 }
