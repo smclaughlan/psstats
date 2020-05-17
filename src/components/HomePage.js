@@ -4,7 +4,7 @@ import { Box, Main, Button } from 'grommet';
 const HomePage = () => {
 
   return (
-    <Main pad="large" margin="small" className="basic">
+    <Main pad="large" margin="small">
       <Box className="basic">
         <h1>PlanetSide Stats</h1>
         <p>PlanetSide 2 is a massively-multiplayer online science fiction game where thousands of players on one server fight to expand their faction's territory.</p>
