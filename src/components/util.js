@@ -4,6 +4,12 @@ const timePlurality = (num, lengthSingular) => {
   if (num > 1) return `${num} ${lengthSingular}s`;
 }
 
+/**
+ *
+ * @param {number} minutes
+ * returns string
+ * In a format like 10 days 5 minutes
+ */
 export const timeFormat = minutes => {
   let years = 0;
   let months = 0;

@@ -42,6 +42,7 @@ const OutfitPage = () => {
     }
   }
 
+
   const formatMemData = (unsortedMembers) => {
     return unsortedMembers.map(member => {
       member.rank_ordinal = parseInt(member.rank_ordinal);
@@ -61,6 +62,14 @@ const OutfitPage = () => {
     })
   }
 
+  /**
+   * Sorts the array and directly uses setMembers()
+   * @param {array} arr
+   * This arr should be an array of objects, the members.
+   * @param {string} sortMethod
+   * This string specified sort method.
+   * @returns nothing
+   */
   const sortMembers = (arr, sortMethod) => {
     let newMemberArr = arr.slice();
     if (sortMethod === "online") {
