@@ -9,12 +9,12 @@ const NavBar = () => {
         dropAlign={{ top: 'bottom', right: 'right' }}
         color="light-2"
         dropContent={
-          <Box pad="medium">
-            <Anchor label="Home" href="/" hoverIndicator />
-            <Anchor label="Factions" href="/factions" hoverIndicator />
-            <Anchor label="Classes" href="/classes" hoverIndicator />
-            <Anchor label="Vehicles" href="/vehicles" hoverIndicator />
-            <Anchor label="Leaderboard" href="/leaderboard" hoverIndicator />
+          <Box className="dropDown" pad="medium">
+            <Anchor label="Home" href="/" hoverIndicator color="white" />
+            <Anchor label="Factions" href="/factions" hoverIndicator color="white" />
+            <Anchor label="Classes" href="/classes" hoverIndicator color="white" />
+            <Anchor label="Vehicles" href="/vehicles" hoverIndicator color="white" />
+            <Anchor label="Leaderboard" href="/leaderboard" hoverIndicator color="white" />
           </Box>
         }
       >
