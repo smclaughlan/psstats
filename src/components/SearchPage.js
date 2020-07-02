@@ -49,6 +49,7 @@ const SearchPage = () => {
         </div>
         <div className="searchInputs">
           <Select
+            className="searchSelect"
             options={['Character', 'Outfit']}
             value={selectValue}
             onChange={({ option }) => setSelectValue(option)}
