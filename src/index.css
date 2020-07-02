@@ -70,6 +70,10 @@ p {
   max-width: 800px;
 }
 
+.invisible {
+  display: none;
+}
+
 .outfitBox{
   transition: all 1s;
   margin:20px auto;

@@ -56,7 +56,7 @@ const SearchPage = () => {
         </div>
         {results ?
           <div className="searchResContainer">
-            <Box className="basic" direction="row" justify="evenly" alignContent="center" wrap={true} animation="fadeIn">
+            <Box className="invisible" direction="row" justify="evenly" alignContent="center" wrap={true} animation="fadeIn">
               {"character_name_list" in results ?
                 results.character_name_list.map(character => {
                   return (
