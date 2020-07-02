@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, Heading, Paragraph, Main, Box, Button, Select } from 'grommet';
+import { Form, TextInput, Paragraph, Main, Box, Button, Select } from 'grommet';
 import { backEndURL } from '../config';
 
 const SearchPage = () => {
@@ -9,20 +9,18 @@ const SearchPage = () => {
 
   const performSearch = async (e) => {
     try {
-      if (e.keyCode === 13) {
-        if (selectValue === 'Character') {
-          const res = await fetch(`${backEndURL}/chars/${value.toLowerCase()}`);
-          if (res.ok) {
-            const resJson = await res.json();
-            setResults(resJson);
-          }
+      if (selectValue === 'Character') {
+        const res = await fetch(`${backEndURL}/chars/${value.toLowerCase()}`);
+        if (res.ok) {
+          const resJson = await res.json();
+          setResults(resJson);
         }
-        if (selectValue === 'Outfit') {
-          const res = await fetch(`${backEndURL}/outfits/${value}`);
-          if (res.ok) {
-            const resJson = await res.json();
-            setResults(resJson);
-          }
+      }
+      if (selectValue === 'Outfit') {
+        const res = await fetch(`${backEndURL}/outfits/${value}`);
+        if (res.ok) {
+          const resJson = await res.json();
+          setResults(resJson);
         }
       }
     } catch (err) {
@@ -30,97 +28,64 @@ const SearchPage = () => {
     }
   }
 
-  if (!results) {
-    return (
-      <Main>
-        <Box className="basic" animation="fadeIn">
-          <Paragraph className="paragraph">Search by character or by outfit</Paragraph>
-          <div className="searchInputs">
-            <TextInput
-              placeholder="Enter search term here"
-              value={value}
-              onChange={event => setValue(event.target.value)}
-              onKeyDown={performSearch}
-            />
-            <Select
-              options={['Character', 'Outfit']}
-              value={selectValue}
-              onChange={({ option }) => setSelectValue(option)}
-            />
-          </div>
-        </Box>
-      </Main>
-    )
-  }
-
-  if ("errorCode" in results) {
-    return (
-      <Main>
-        <Box className="basic" animation="fadeIn">
-          <Paragraph className="paragraph">Search by character or by outfit</Paragraph>
-          <Paragraph className="paragraph">Error! {results.errorMessage}</Paragraph>
-          <div className="searchInputs">
-            <TextInput
-              placeholder="Enter search term here"
-              value={value}
-              onChange={event => setValue(event.target.value)}
-              onKeyDown={performSearch}
-            />
-            <Select
-              options={['Character', 'Outfit']}
-              value={selectValue}
-              onChange={({ option }) => setSelectValue(option)}
-            />
-          </div>
-        </Box>
-      </Main>
-    )
-  }
-
   return (
     <Main>
       <Box className="basic" animation="fadeIn">
         <Paragraph className="paragraph">Search by character or by outfit</Paragraph>
+        {results && "errorCode" in results ?
+          <Paragraph className="paragraph">Error! {results.errorMessage}</Paragraph>
+          :
+          <></>
+        }
         <div className="searchInputs">
-          <TextInput
-            placeholder="Enter search term here"
-            value={value}
-            onChange={event => setValue(event.target.value)}
-            onKeyDown={performSearch}
-          />
+          <Form className="searchInputs" onSubmit={performSearch}>
+            <TextInput
+              placeholder="Enter search term here"
+              value={value}
+              onChange={event => setValue(event.target.value)}
+            />
+            <Button className="basicButton" type="submit" label="Search" />
+          </Form>
+        </div>
+        <div className="searchInputs">
           <Select
             options={['Character', 'Outfit']}
             value={selectValue}
             onChange={({ option }) => setSelectValue(option)}
           />
         </div>
-        <div className="searchResContainer">
-          <Box className="basic" direction="row" justify="evenly" alignContent="center" wrap={true} animation="fadeIn">
-            {"character_name_list" in results ?
-              results.character_name_list.map(character => {
-                return (
-                  <Button className="searchRes" key={character.name.first} href={`/char/${character.name.first}`} margin="medium" label={character.name.first} size="medium" />
-                )
-              }) : null}
-            {"outfit_list" in results ?
-              results.outfit_list.map(outfit => {
-                if (outfit.alias.length < 1) {
-                  return null;
-                }
-                return (
-                  <Box key={outfit.outfit_id} className="outfitBox">
-                    <Button className="searchRes" href={`/outfit/${outfit.outfit_id}`} margin="medium" size="medium" label={`${outfit.alias}`} />
-                    <Paragraph>{outfit.name}</Paragraph>
-                    <Paragraph>{`Created ${outfit.time_created_date.split(' ')[0]} with ${outfit.member_count} current members`}</Paragraph>
-                  </Box>
-                )
-              }) : null}
-          </Box>
-        </div>
+        {results ?
+          <div className="searchResContainer">
+            <Box className="basic" direction="row" justify="evenly" alignContent="center" wrap={true} animation="fadeIn">
+              {"character_name_list" in results ?
+                results.character_name_list.map(character => {
+                  return (
+                    <Button className="searchRes" key={character.name.first} href={`/char/${character.name.first}`} margin="medium" label={character.name.first} size="medium" />
+                  )
+                }) : null}
+              {"outfit_list" in results ?
+                results.outfit_list.map(outfit => {
+                  if (outfit.alias.length < 1) {
+                    return null;
+                  }
+                  return (
+                    <Box key={outfit.outfit_id} className="outfitBox">
+                      <Button className="searchRes" href={`/outfit/${outfit.outfit_id}`} margin="medium" size="medium" label={`${outfit.alias}`} />
+                      <Paragraph>{outfit.name}</Paragraph>
+                      <Paragraph>{`Created ${outfit.time_created_date.split(' ')[0]} with ${outfit.member_count} current members`}</Paragraph>
+                    </Box>
+                  )
+                }) : null}
+            </Box>
+          </div>
+          :
+          <></>
+        }
       </Box>
-    </Main >
-  );
+    </Main>
+  )
 }
+
 
 
 export default SearchPage;
