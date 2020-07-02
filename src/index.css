@@ -13,6 +13,11 @@ p {
   margin: 3px 5px;
 }
 
+.paragraph {
+  padding: 5px 5px;
+  margin: 3px 5px;
+}
+
 .loader {
   margin: 100px auto;
 }

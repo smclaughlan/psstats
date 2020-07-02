@@ -34,10 +34,7 @@ const SearchPage = () => {
     return (
       <Main>
         <Box className="basic" animation="fadeIn">
-          <Heading>Search</Heading>
-          <Paragraph>By character or by outfit</Paragraph>
-        </Box>
-        <Box className="basic" animation="fadeIn">
+          <Paragraph className="paragraph">Search by character or by outfit</Paragraph>
           <div className="searchInputs">
             <TextInput
               placeholder="Enter search term here"
@@ -60,11 +57,8 @@ const SearchPage = () => {
     return (
       <Main>
         <Box className="basic" animation="fadeIn">
-          <Heading>Search</Heading>
-          <Paragraph>By character or by outfit</Paragraph>
-        </Box>
-        <Box className="basic" animation="fadeIn">
-          <Paragraph>Error! {results.errorMessage}</Paragraph>
+          <Paragraph className="paragraph">Search by character or by outfit</Paragraph>
+          <Paragraph className="paragraph">Error! {results.errorMessage}</Paragraph>
           <div className="searchInputs">
             <TextInput
               placeholder="Enter search term here"
@@ -86,10 +80,7 @@ const SearchPage = () => {
   return (
     <Main>
       <Box className="basic" animation="fadeIn">
-        <Heading>Search</Heading>
-        <Paragraph>By character or by outfit</Paragraph>
-      </Box>
-      <Box className="basic" animation="fadeIn">
+        <Paragraph className="paragraph">Search by character or by outfit</Paragraph>
         <div className="searchInputs">
           <TextInput
             placeholder="Enter search term here"
