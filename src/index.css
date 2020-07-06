@@ -40,6 +40,14 @@ p {
   box-shadow: 1px 1px 2px 2px green;
 }
 
+.basicwide {
+  padding: 30px;
+  margin: 30px auto;
+  min-width: 980px;
+  max-width: 980px;
+  box-shadow: 1px 1px 2px 2px green;
+}
+
 .factionbasic {
   padding: 30px;
   margin: 30px auto;
