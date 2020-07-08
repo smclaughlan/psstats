@@ -3,6 +3,13 @@ This project utilizes the Planetside2 API to make information and statistics eas
 * [Feature list](https://github.com/smclaughlan/psstats/blob/master/documentation/feature-list/features.md)
 * [Components](https://github.com/smclaughlan/psstats/blob/master/documentation/feature-packet/components.md)
 
+## Technologies
+
+* React
+* JavaScript
+* Grommet
+* Already existing API
+
 ## Features
 
 ### Leaderboards
@@ -32,9 +39,8 @@ The stats for an outfit include member count, faction, and basic information abo
 Clicking the headers on the table will sort by that column.
 ![](documentation/images/statsoutfitsort.png)
 
-## Technologies
+### Information
 
-* React
-* JavaScript
-* Grommet
-* Already existing API
+There are pages for general information about factions, vehicles, and character classes as well.
+
+![](documentation/images/infoclasses.png)
