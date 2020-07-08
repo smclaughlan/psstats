@@ -23,7 +23,14 @@ Find characters and outfits (groups of players).
 
 After finding a character or outfit, clicking the name will open the stats page.
 
+The stats for a character include primary class, faction, score, accuracy, etc.
+![](documentation/images/statsplayer.png)
 
+The stats for an outfit include member count, faction, and basic information about the characters within the outfit.
+![](documentation/images/statsoutfit.png)
+
+Clicking the headers on the table will sort by that column.
+![](documentation/images/statsoutfitsort.png)
 
 ## Technologies
 
