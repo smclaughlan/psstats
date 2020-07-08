@@ -5,11 +5,25 @@ This project utilizes the Planetside2 API to make information and statistics eas
 
 ## Features
 
-### Leaderboard page
+### Leaderboards
 
 Displays players with highest rankings in categories.
 
 ![](documentation/images/leaderboard.png)
+
+### Search
+
+Find characters and outfits (groups of players).
+
+![](documentation/images/searchcharacter.png)
+
+![](documentation/images/searchoutfit.png)
+
+### Character or outfit stats
+
+After finding a character or outfit, clicking the name will open the stats page.
+
+
 
 ## Technologies
 
