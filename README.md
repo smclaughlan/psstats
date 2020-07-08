@@ -9,4 +9,5 @@ This project utilizes the Planetside2 API to make information and statistics eas
 
 * React
 * JavaScript
+* Grommet
 * Already existing API
