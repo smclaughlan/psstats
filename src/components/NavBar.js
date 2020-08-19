@@ -1,7 +1,12 @@
 import React from 'react';
 import { Anchor, DropButton, Nav, Box } from "grommet";
+import { userAuth0, useAuth0 } from '@auth0/auth0-react';
+
+import LogoutButton from './LogoutButton';
+import LoginButton from './LoginButton';
 
 const NavBar = () => {
+  let { isAuthenticated } = useAuth0();
 
   return (
     <Nav direction="row" background="brand" pad="medium">
@@ -23,6 +28,7 @@ const NavBar = () => {
       <Anchor href="/search" color="light-2" margin="medium">
         <i className="fas fa-search"></i>
       </Anchor>
+      {isAuthenticated ? <LogoutButton /> : <LoginButton />}
       <h2>PlanetSide Stats</h2>
     </Nav>
   )
