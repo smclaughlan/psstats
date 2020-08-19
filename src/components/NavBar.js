@@ -8,6 +8,9 @@ import LoginButton from './LoginButton';
 
 const NavBar = () => {
   let { isAuthenticated } = useAuth0();
+  // let { user } = useAuth0();
+  // let name;
+  // if (user) name = user.name;
 
   return (
     <Nav direction="row" background="brand" pad="medium">
