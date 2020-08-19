@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { Anchor, DropButton, Nav, Box } from "grommet";
 import { userAuth0, useAuth0 } from '@auth0/auth0-react';
 
@@ -15,11 +16,21 @@ const NavBar = () => {
         color="light-2"
         dropContent={
           <Box className="dropDown" pad="medium">
-            <Anchor label="Home" href="/" hoverIndicator color="white" />
-            <Anchor label="Factions" href="/factions" hoverIndicator color="white" />
-            <Anchor label="Classes" href="/classes" hoverIndicator color="white" />
-            <Anchor label="Vehicles" href="/vehicles" hoverIndicator color="white" />
-            <Anchor label="Leaderboard" href="/leaderboard" hoverIndicator color="white" />
+            <NavLink to={"/"}>
+              <Anchor label="Home" href="/" hoverIndicator color="white" />
+            </NavLink>
+            <NavLink to={"/factions"}>
+              <Anchor label="Factions" href="/factions" hoverIndicator color="white" />
+            </NavLink>
+            <NavLink to={"/classes"}>
+              <Anchor label="Classes" href="/classes" hoverIndicator color="white" />
+            </NavLink>
+            <NavLink to={"/vehicles"}>
+              <Anchor label="Vehicles" href="/vehicles" hoverIndicator color="white" />
+            </NavLink>
+            <NavLink to={"/leaderboard"}>
+              <Anchor label="Leaderboard" href="/leaderboard" hoverIndicator color="white" />
+            </NavLink>
           </Box>
         }
       >
