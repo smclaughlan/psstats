@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Grommet } from 'grommet';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Auth0ProviderHistory from './auth0provider';
 
 const darkTheme = {
   "name": "my theme",
@@ -514,10 +516,14 @@ const darkTheme = {
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Grommet theme={darkTheme}>
-      <App />
-    </Grommet>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <Router>
+    <Auth0ProviderHistory>
+      <Grommet theme={darkTheme}>
+        <App />
+      </Grommet>
+    </Auth0ProviderHistory>
+  </Router>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
