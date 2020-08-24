@@ -22,6 +22,7 @@
     "react-scripts": "^3.4.3",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "showdown": "^1.9.1",
     "sort-array": "^4.1.1",
     "styled-components": "^5.1.0"
   },
