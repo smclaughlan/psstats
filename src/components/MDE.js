@@ -22,17 +22,6 @@ export function MDE(props) {
     setValue("");
   }
 
-  const updatePost = () => {
-    props.sendUpdatePostReq(props.token, props.editPost, value, props.sketchbookId);
-  }
-
-
-  if (props.posts && props.posts[props.sketchbookId] && props.posts[props.sketchbookId][props.editPost] && postLoaded === false) {
-    setValue(props.posts[props.sketchbookId][props.editPost].body);
-    setPostLoaded(true);
-  }
-
-
   return (
     <div className="container">
       <ReactMde
@@ -44,33 +33,10 @@ export function MDE(props) {
           Promise.resolve(converter.makeHtml(markdown))
         }
       />
-      {props.editPost ?
-        <Button variant="outlined" style={{ marginTop: "10px", marginRight: "10px" }} onClick={updatePost}>Update Post</Button>
-        :
-        <Button variant="outlined" style={{ marginTop: "10px", marginRight: "10px" }} onClick={newPost}>Post</Button>
-      }
     </div>
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    currentUserId: state.user.currentUserId,
-    token: state.user.token,
-    posts: state.sketchbook.posts,
-  };
-};
 
-const mapDispatchToProps = dispatch => {
-  return {
-    sendPostReq: (...args) => dispatch(sendPostReq(...args)),
-    sendUpdatePostReq: (...args) => dispatch(sendUpdatePostReq(...args)),
-  };
-};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(
-  MDE
-);
+export default MDE;
