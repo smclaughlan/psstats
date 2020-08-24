@@ -9,6 +9,7 @@ import CharacterClassScore from './CharacterClassScore';
 import CharacterClassAccuracy from './CharacterClassAccuracy';
 import CharacterOneLife from './CharacterOneLife';
 import CharacterClassTime from './CharacterClassTime';
+import MDE from './MDE';
 
 const CharacterPage = () => {
   const [data, setData] = React.useState(null);
@@ -88,6 +89,7 @@ const CharacterPage = () => {
             <CharacterClassTime {...dataId} />
           </Tab>
         </Tabs>
+        <MDE />
       </Box>
     </div>
     :
