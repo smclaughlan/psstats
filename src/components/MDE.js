@@ -3,6 +3,7 @@ import ReactMde from "react-mde";
 import * as Showdown from "showdown";
 import { Button } from 'grommet';
 import "react-mde/lib/styles/css/react-mde-all.css";
+import { backEndURL } from '../config';
 
 import { userAuth0, useAuth0 } from '@auth0/auth0-react';
 
@@ -27,8 +28,16 @@ const MDE = () => {
     email = user.email;
   }
 
-  const newPost = () => {
-    // props.sendPostReq(props.token, props.sketchbook_id, value);
+  let url = window.location.href;
+
+  const newPost = async () => {
+    const res = await fetch(`${backEndURL}/comments`, {
+      method: "post",
+      body: JSON.stringify({ name, email, url, "body": value }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
     window.localStorage.setItem("justPosted", true);
     setValue("");
   }
