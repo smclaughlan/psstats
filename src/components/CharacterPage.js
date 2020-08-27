@@ -10,10 +10,13 @@ import CharacterClassAccuracy from './CharacterClassAccuracy';
 import CharacterOneLife from './CharacterOneLife';
 import CharacterClassTime from './CharacterClassTime';
 import MDE from './MDE';
+import ReactMarkdown from 'react-markdown';
+import * as Showdown from 'showdown';
 
 const CharacterPage = () => {
   const [data, setData] = React.useState(null);
   const [dataId, setDataId] = React.useState(null);
+  const [commentData, setCommentData] = React.useState(null);
 
   const getCharData = async () => {
     try {
@@ -28,10 +31,24 @@ const CharacterPage = () => {
     }
   }
 
+  const getComments = async () => {
+    try {
+      const res = await fetch(`${backEndURL}/comments/?url=${window.location.href}`);
+      if (res.ok) {
+        const resData = await res.json();
+        await setCommentData(resData.comments);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   React.useEffect(() => {
     getCharData();
+    getComments();
   }, []);
 
+  console.log(commentData);
   React.useEffect(() => {
     const getCharIdData = async () => {
       if (data) {
@@ -89,6 +106,23 @@ const CharacterPage = () => {
             <CharacterClassTime {...dataId} />
           </Tab>
         </Tabs>
+      </Box>
+      <Box>
+        {commentData ?
+          <>
+            <h1>Comments</h1>
+            {commentData.map(post => {
+              return (
+                <>
+                  <h4>{post.name}</h4>
+                  <ReactMarkdown source={post.body} />
+                </>
+              )
+            })}
+          </>
+          :
+          <>
+          </>}
       </Box>
       <MDE />
     </div>
