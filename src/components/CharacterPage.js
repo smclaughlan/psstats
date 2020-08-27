@@ -89,8 +89,8 @@ const CharacterPage = () => {
             <CharacterClassTime {...dataId} />
           </Tab>
         </Tabs>
-        <MDE />
       </Box>
+      <MDE />
     </div>
     :
     <Loading />

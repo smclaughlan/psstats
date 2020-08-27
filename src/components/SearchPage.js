@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, TextInput, Paragraph, Main, Box, Button, Select } from 'grommet';
 import { backEndURL } from '../config';
+import { NavLink } from 'react-router-dom';
 
 const SearchPage = () => {
   const [value, setValue] = React.useState('');
@@ -61,7 +62,9 @@ const SearchPage = () => {
               {"character_name_list" in results ?
                 results.character_name_list.map(character => {
                   return (
-                    <Button className="searchRes" key={character.name.first} href={`/char/${character.name.first}`} margin="medium" label={character.name.first} size="medium" />
+                    <NavLink to={`/char/${character.name.first}`} key={character.name.first}>
+                      <Button className="searchRes" href={`/char/${character.name.first}`} margin="medium" label={character.name.first} size="medium" />
+                    </NavLink>
                   )
                 }) : null}
               {"outfit_list" in results ?
