@@ -67,6 +67,7 @@ const CharacterPage = () => {
     } catch (err) {
       console.error(err);
     }
+    getComments();
   }
 
   React.useEffect(() => {
