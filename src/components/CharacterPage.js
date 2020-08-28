@@ -12,11 +12,23 @@ import CharacterClassTime from './CharacterClassTime';
 import MDE from './MDE';
 import ReactMarkdown from 'react-markdown';
 import * as Showdown from 'showdown';
+import moment from 'moment';
+import { userAuth0, useAuth0 } from '@auth0/auth0-react';
+
 
 const CharacterPage = () => {
   const [data, setData] = React.useState(null);
   const [dataId, setDataId] = React.useState(null);
   const [commentData, setCommentData] = React.useState(null);
+
+  let { isAuthenticated } = useAuth0();
+  let { user } = useAuth0();
+  let name;
+  let email;
+  if (user) {
+    name = user.name;
+    email = user.email;
+  }
 
   const getCharData = async () => {
     try {
@@ -43,12 +55,25 @@ const CharacterPage = () => {
     }
   }
 
+  const delPost = async (postId) => {
+    try {
+      const res = await fetch(`${backEndURL}/comments`, {
+        method: "delete",
+        body: JSON.stringify({ "id": postId }),
+        headers: {
+          "Content-Type": "application/json",
+        }
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   React.useEffect(() => {
     getCharData();
     getComments();
   }, []);
 
-  console.log(commentData);
   React.useEffect(() => {
     const getCharIdData = async () => {
       if (data) {
@@ -112,9 +137,17 @@ const CharacterPage = () => {
           <>
             <h1>Comments</h1>
             {commentData.map(post => {
+              let postId = post.id;
               return (
                 <>
-                  <h4>{post.name}</h4>
+                  {post.email === email ? <h4>{post.name} - {moment(post.createdAt)
+                    .toDate()
+                    .toLocaleString()} - <Button className="searchRes" onClick={() => { delPost(postId) }}>X</Button></h4>
+                    :
+                    <h4>{post.name} - {moment(post.createdAt)
+                      .toDate()
+                      .toLocaleString()}</h4>
+                  }
                   <ReactMarkdown source={post.body} />
                 </>
               )

@@ -11,6 +11,7 @@
     "express": "^4.17.1",
     "express-favicon": "^2.0.1",
     "grommet": "^2.13.0",
+    "moment": "^2.27.0",
     "path": "^0.12.7",
     "polished": "^3.6.2",
     "react": "^16.13.1",
