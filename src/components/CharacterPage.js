@@ -136,7 +136,7 @@ const CharacterPage = () => {
       <Box>
         {commentData ?
           <>
-            <h1>Comments</h1>
+            <h1>Comments:</h1>
             {commentData.map(post => {
               let postId = post.id;
               return (
@@ -158,7 +158,7 @@ const CharacterPage = () => {
           <>
           </>}
       </Box>
-      <MDE />
+      <MDE name={data.name.first} gc={getComments} />
     </div>
     :
     <Loading />

@@ -15,7 +15,7 @@ const converter = new Showdown.Converter({
   tasklists: true
 });
 
-const MDE = () => {
+const MDE = (props) => {
   const [value, setValue] = React.useState("");
   const [postLoaded, setPostLoaded] = React.useState(false);
   const [selectedTab, setSelectedTab] = React.useState("write");
@@ -40,24 +40,28 @@ const MDE = () => {
     });
     window.localStorage.setItem("justPosted", true);
     setValue("");
+    props.gc(); //get comments
   }
 
   return (
     <>
       {user ?
-        <div className="container">
-          <ReactMde
-            value={value}
-            onChange={setValue}
-            selectedTab={selectedTab}
-            onTabChange={setSelectedTab}
-            generateMarkdownPreview={
-              markdown =>
-                Promise.resolve(converter.makeHtml(markdown))
-            }
-          />
-          <Button className="searchRes" onClick={newPost} margin="medium" label={`Post`} size="medium" />
-        </div>
+        <>
+          <h1>Leave a comment on {props.name}:</h1>
+          <div className="container">
+            <ReactMde
+              value={value}
+              onChange={setValue}
+              selectedTab={selectedTab}
+              onTabChange={setSelectedTab}
+              generateMarkdownPreview={
+                markdown =>
+                  Promise.resolve(converter.makeHtml(markdown))
+              }
+            />
+            <Button className="searchRes" onClick={newPost} margin="medium" label={`Post`} size="medium" />
+          </div>
+        </>
         :
         <>
         </>}
