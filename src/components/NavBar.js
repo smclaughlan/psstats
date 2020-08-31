@@ -40,9 +40,9 @@ const NavBar = () => {
         <i className="fas fa-bars"></i>
       </DropButton>
       <NavLink to={"/search"}>
-        <Anchor href="/search" color="light-2" margin="medium">
+        <Text href="/search" color="light-2" margin="medium">
           <i className="fas fa-search"></i>
-        </Anchor>
+        </Text>
       </NavLink>
       {isAuthenticated ? <LogoutButton /> : <LoginButton />}
       <h2>PlanetSide Stats</h2>
