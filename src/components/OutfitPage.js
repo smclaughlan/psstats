@@ -9,6 +9,7 @@ import ReactMarkdown from 'react-markdown';
 import * as Showdown from 'showdown';
 import moment from 'moment';
 import { userAuth0, useAuth0 } from '@auth0/auth0-react';
+import { NavLink } from 'react-router-dom';
 
 const OutfitPage = () => {
   const [data, setData] = React.useState(null);
@@ -194,7 +195,11 @@ const OutfitPage = () => {
                 <TableRow key={member.name.first} className="outfitTableRow">
                   <TableCell>{idx + 1}</TableCell>
                   <TableCell><img width="30" alt={member.main_class[0].name.en} src={`${imgURL}${member.main_class[0].image_path}`} /></TableCell>
-                  <TableCell><Button label={member.name.first} href={`/char/${member.name.first}`} /></TableCell>
+                  <TableCell>
+                    <NavLink to={`/char/${member.name.first}`}>
+                      <Button label={member.name.first} href={`/char/${member.name.first}`} />
+                    </NavLink>
+                  </TableCell>
                   <TableCell>{member.rank_ordinal}. {member.rank}</TableCell>
                   <TableCell>{member.battle_rank.value}</TableCell>
                   <TableCell>{member.kdr}</TableCell>
