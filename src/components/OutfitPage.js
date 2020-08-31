@@ -4,11 +4,53 @@ import { backEndURL, imgURL } from '../config';
 import Loading from './Loading';
 import sortArray from 'sort-array';
 
+import MDE from './MDE';
+import ReactMarkdown from 'react-markdown';
+import * as Showdown from 'showdown';
+import moment from 'moment';
+import { userAuth0, useAuth0 } from '@auth0/auth0-react';
 
 const OutfitPage = () => {
   const [data, setData] = React.useState(null);
   const [members, setMembers] = React.useState([]);
   const [factionMemberData, setFactionMemberData] = React.useState(null);
+  const [commentData, setCommentData] = React.useState(null);
+
+  let { isAuthenticated } = useAuth0();
+  let { user } = useAuth0();
+  let name;
+  let email;
+  if (user) {
+    name = user.name;
+    email = user.email;
+  }
+
+  const getComments = async () => {
+    try {
+      const res = await fetch(`${backEndURL}/comments/?url=${window.location.href}`);
+      if (res.ok) {
+        const resData = await res.json();
+        await setCommentData(resData.comments);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  const delPost = async (postId) => {
+    try {
+      const res = await fetch(`${backEndURL}/comments`, {
+        method: "delete",
+        body: JSON.stringify({ "id": postId }),
+        headers: {
+          "Content-Type": "application/json",
+        }
+      });
+    } catch (err) {
+      console.error(err);
+    }
+    getComments();
+  }
 
   const getOutfitData = async () => {
     try {
@@ -117,6 +159,7 @@ const OutfitPage = () => {
 
   React.useEffect(() => {
     getOutfitData();
+    getComments();
   }, []);
 
   React.useEffect(() => {
@@ -162,6 +205,32 @@ const OutfitPage = () => {
           </TableHeader>
         </Table>
       </Box>
+      <Box>
+        {commentData ?
+          <>
+            <h1>Comments:</h1>
+            {commentData.map(post => {
+              let postId = post.id;
+              return (
+                <>
+                  {post.email === email ? <h4>{post.name} - {moment(post.createdAt)
+                    .toDate()
+                    .toLocaleString()} - <Button className="searchRes" onClick={() => { delPost(postId) }}>X</Button></h4>
+                    :
+                    <h4>{post.name} - {moment(post.createdAt)
+                      .toDate()
+                      .toLocaleString()}</h4>
+                  }
+                  <ReactMarkdown source={post.body} />
+                </>
+              )
+            })}
+          </>
+          :
+          <>
+          </>}
+      </Box>
+      <MDE name={data.outfit_list[0].alias} gc={getComments} />
     </div>
     :
     <Loading />
