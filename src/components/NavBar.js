@@ -39,14 +39,14 @@ const NavBar = () => {
       >
         <i className="fas fa-bars"></i>
       </DropButton>
-      <NavLink to={"/search"}>
-        <Text href="/search" color="light-2" margin="medium">
+      <Text style={{ color: "#00FF00", alignSelf: "center" }} >
+        <NavLink to={"/search"}>
           <i className="fas fa-search"></i>
-        </Text>
-      </NavLink>
+        </NavLink>
+      </Text>
       {isAuthenticated ? <LogoutButton /> : <LoginButton />}
       <h2>PlanetSide Stats</h2>
-    </Nav>
+    </Nav >
   )
 }
 
