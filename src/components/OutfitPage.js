@@ -206,7 +206,7 @@ const OutfitPage = () => {
         </Table>
       </Box>
       <Box>
-        {commentData ?
+        {commentData.length > 0 ?
           <>
             <h1>Comments:</h1>
             {commentData.map(post => {
