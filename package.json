@@ -29,7 +29,7 @@
     "styled-components": "^5.1.0"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "set REACT_APP_AUTH0_DOMAIN=dev-7qvhnmah.us.auth0.com && set REACT_APP_AUTH0_CLIENT_ID=MxH6V2vHzvUCfpx0Fo67fPhNMSk3wF5T && node server.js",
     "go": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
