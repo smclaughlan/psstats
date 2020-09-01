@@ -140,7 +140,7 @@ const CharacterPage = () => {
         </Tabs>
       </Box>
       <Box>
-        {commentData.length > 0 ?
+        {commentData && commentData.length > 0 ?
           <>
             <h1>Comments:</h1>
             {commentData.map(post => {
