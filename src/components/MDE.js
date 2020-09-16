@@ -33,7 +33,6 @@ const MDE = (props) => {
   const newPost = async () => {
     const res = await fetch(`${backEndURL}/comments`, {
       method: "post",
-      mode: "cors",
       body: JSON.stringify({ name, email, url, "body": value }),
       headers: {
         "Content-Type": "application/json"
