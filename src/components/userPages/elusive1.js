@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
-import { Box, Paragraph } from 'grommet';
+import { Box } from 'grommet';
 
 const Elusive1Page = () => {
 
