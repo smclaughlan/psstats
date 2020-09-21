@@ -29,6 +29,9 @@ const CharacterPage = () => {
   if (user) {
     name = user.name;
     email = user.email;
+  } else {
+    name = "Guest";
+    email = "Guest@Guest.com";
   }
 
   const getCharData = async () => {

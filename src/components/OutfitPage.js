@@ -24,6 +24,9 @@ const OutfitPage = () => {
   if (user) {
     name = user.name;
     email = user.email;
+  } else {
+    name = "Guest";
+    email = "Guest@Guest.com";
   }
 
   const getComments = async () => {

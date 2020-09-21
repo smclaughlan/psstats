@@ -26,6 +26,9 @@ const MDE = (props) => {
   if (user) {
     name = user.name;
     email = user.email;
+  } else {
+    name = "Guest";
+    email = "Guest@Guest.com";
   }
 
   let url = window.location.href;
@@ -45,7 +48,7 @@ const MDE = (props) => {
 
   return (
     <>
-      {user ?
+      {name ?
         <>
           <h1>Leave a comment on {props.name}:</h1>
           <div className="container">
