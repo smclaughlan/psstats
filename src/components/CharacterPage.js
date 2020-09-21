@@ -16,6 +16,8 @@ import moment from 'moment';
 import { userAuth0, useAuth0 } from '@auth0/auth0-react';
 import { NavLink } from 'react-router-dom';
 
+import Elusive1Page from './userPages/elusive1';
+
 
 const CharacterPage = () => {
   const [data, setData] = React.useState(null);
@@ -33,6 +35,8 @@ const CharacterPage = () => {
     name = "Guest";
     email = "Guest@Guest.com";
   }
+
+  const characterPageName = window.location.href.split('/')[4];
 
   const getCharData = async () => {
     try {
@@ -113,6 +117,13 @@ const CharacterPage = () => {
         <h3>BR: {data.battle_rank.value}</h3>
         {data.online_status === "1" ? <h3 className="displayOnline">Online</h3> : <h3 className="displayOffline">Offline</h3>}
       </Box>
+
+      {characterPageName === "elusive1" ?
+        <Elusive1Page />
+        :
+        <></>}
+
+
       <Box animation="fadeIn" className="basic" align="center">
         <Tabs>
           <Tab title="General">
