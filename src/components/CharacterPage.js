@@ -17,6 +17,7 @@ import { userAuth0, useAuth0 } from '@auth0/auth0-react';
 import { NavLink } from 'react-router-dom';
 
 import Elusive1Page from './userPages/elusive1';
+import IGoRawrPage from './userPages/igorawr';
 
 
 const CharacterPage = () => {
@@ -120,6 +121,10 @@ const CharacterPage = () => {
 
       {characterPageName === "elusive1" ?
         <Elusive1Page />
+        :
+        <></>}
+      {characterPageName === "iGoRawrrrr" ?
+        <IGoRawrPage />
         :
         <></>}
 
