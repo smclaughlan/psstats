@@ -19,6 +19,9 @@ import { NavLink } from 'react-router-dom';
 import Elusive1Page from './userPages/elusive1';
 import IGoRawrPage from './userPages/igorawr';
 import CyriousPage from './userPages/cyrious';
+import CAMIKAZE78Page from './userPages/camikaze78';
+import MoukassPage from './userPages/moukass';
+import LBPage from './userpages/lb';
 
 
 const CharacterPage = () => {
@@ -130,6 +133,18 @@ const CharacterPage = () => {
         <></>}
       {characterPageName === "PattyFatHead" ?
         <CyriousPage />
+        :
+        <></>}
+      {characterPageName === "CAMIKAZE78" ?
+        <CAMIKAZE78Page />
+        :
+        <></>}
+      {characterPageName === "Moukass" ?
+        <MoukassPage />
+        :
+        <></>}
+      {characterPageName === "lillbabs" ?
+        <LBPage />
         :
         <></>}
 
