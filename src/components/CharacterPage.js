@@ -21,7 +21,9 @@ import IGoRawrPage from './userPages/igorawr';
 import CyriousPage from './userPages/cyrious';
 import CAMIKAZE78Page from './userPages/camikaze78';
 import MoukassPage from './userPages/moukass';
-import LBPage from './userpages/lb';
+import LBPage from './userPages/lb';
+import DimGiantPage from './userPages/dimgiant';
+import FaberOnePage from './userPages/faberone';
 
 
 const CharacterPage = () => {
@@ -145,6 +147,14 @@ const CharacterPage = () => {
         <></>}
       {characterPageName === "lillbabs" ?
         <LBPage />
+        :
+        <></>}
+      {characterPageName === "DimGiant" ?
+        <DimGiantPage />
+        :
+        <></>}
+      {characterPageName === "FabertheOne" ?
+        <FaberOnePage />
         :
         <></>}
 
