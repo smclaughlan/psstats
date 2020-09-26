@@ -24,6 +24,7 @@ import MoukassPage from './userPages/moukass';
 import LBPage from './userPages/lb';
 import DimGiantPage from './userPages/dimgiant';
 import FaberOnePage from './userPages/faberone';
+import FlashyPage from './userPages/flashy';
 
 
 const CharacterPage = () => {
@@ -155,6 +156,10 @@ const CharacterPage = () => {
         <></>}
       {characterPageName === "FabertheOne" ?
         <FaberOnePage />
+        :
+        <></>}
+      {characterPageName === "Flashy" ?
+        <FlashyPage />
         :
         <></>}
 
