@@ -12,6 +12,11 @@ const HomePage = () => {
         <p>This site makes the stats and information from the Planetside 2 API easily accessible and understandable.</p>
         <FactionPage />
       </Box>
+      <Box pad="large" margine="small">
+        <h1>Well-known players:</h1>
+        <p>Check out the stat pages of popular community members.</p>
+
+      </Box>
     </Main>
   )
 }
