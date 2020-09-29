@@ -30,7 +30,7 @@ const LeaderboardPage = () => {
   }, []);
 
   return (
-    <Box>
+    <Box style={{ marginTop: "50px" }}>
       <Box className="basic" animation="fadeIn">
         <h1>Leaderboards</h1>
         <h3>View the highest ranking characters by category</h3>

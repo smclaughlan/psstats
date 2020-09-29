@@ -21,14 +21,8 @@ const NavBar = () => {
             <NavLink to={"/"}>
               <Text href="/" color="white" hoverIndicator>Home</Text>
             </NavLink>
-            <NavLink to={"/factions"}>
-              <Text href="/" color="white" hoverIndicator>Factions</Text>
-            </NavLink>
             <NavLink to={"/classes"}>
               <Text href="/" color="white" hoverIndicator>Classes</Text>
-            </NavLink>
-            <NavLink to={"/vehicles"}>
-              <Text href="/" color="white" hoverIndicator>Vehicles</Text>
             </NavLink>
             <NavLink to={"/leaderboard"}>
               <Text href="/" color="white" hoverIndicator>Leaderboard</Text>

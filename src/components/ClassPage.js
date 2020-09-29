@@ -25,23 +25,21 @@ const ClassPage = () => {
   }, []);
 
   return (
-    <div>
-      <Box className="basic" alignSelf="center" width="900px" animation="fadeIn">
-        <h1>Classes</h1>
-        <Tabs>
-          {classData ? classData.profile_list.map(profile => {
-            return (
-              <Tab title={profile.name.en}>
-                <ClassDetail profile={profile} />
-              </Tab>
-            )
-          })
-            :
-            <Loading />}
-        </Tabs>
-        <Attribution />
-      </Box >
-    </div>
+    <Box className="basic" alignSelf="center" width="900px" animation="fadeIn" style={{ marginTop: "100px" }}>
+      <h1>Classes</h1>
+      <Tabs>
+        {classData ? classData.profile_list.map(profile => {
+          return (
+            <Tab title={profile.name.en}>
+              <ClassDetail profile={profile} />
+            </Tab>
+          )
+        })
+          :
+          <Loading />}
+      </Tabs>
+      <Attribution />
+    </Box >
   )
 }
 
