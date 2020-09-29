@@ -10,7 +10,9 @@ const NavBar = () => {
   let { isAuthenticated } = useAuth0();
 
   return (
-    <Nav direction="row" background="brand" pad="medium">
+    <Nav direction="row" background="brand" pad="medium" style={{
+      position: "fixed", top: "0px", width: "100vw", zIndex: "10"
+    }}>
       <DropButton
         dropAlign={{ top: 'bottom', right: 'right' }}
         color="light-2"
@@ -41,7 +43,7 @@ const NavBar = () => {
           <i className="fas fa-search"></i>
         </NavLink>
       </Text>
-      {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+      { isAuthenticated ? <LogoutButton /> : <LoginButton />}
       <h2>PlanetSide Stats</h2>
     </Nav >
   )
