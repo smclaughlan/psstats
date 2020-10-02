@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Box, Main, Button } from 'grommet';
 import FactionPage from './FactionPage';
+import LeaderboardPage from './LeaderboardPage';
 
 const HomePage = () => {
   let communityMembers = [
@@ -37,6 +38,7 @@ const HomePage = () => {
             })}
           </Box>
         </Box>
+        <LeaderboardPage />
       </Box>
     </Main>
   )
