@@ -31,7 +31,7 @@ const LeaderboardPage = () => {
 
   return (
     <Box style={{ marginTop: "50px" }}>
-      <Box className="basic" animation="fadeIn">
+      <Box className="basicnooutline" animation="fadeIn">
         <h1>Leaderboards</h1>
         <h3>View the highest ranking characters by category</h3>
       </Box>

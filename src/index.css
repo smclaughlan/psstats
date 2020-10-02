@@ -33,6 +33,12 @@ p {
   box-shadow: 1px 1px 2px 2px green;
 }
 
+.basicnooutline {
+  padding: 10px;
+  margin: 20px auto;
+  max-width: 980px;
+}
+
 .basicsmall {
   padding: 30px;
   margin: 30px auto;
@@ -53,6 +59,12 @@ p {
   margin: 30px auto;
   width: 900px;
   box-shadow: 1px 1px 2px 2px green;
+}
+
+.factionbasicnooutline {
+  padding: 30px;
+  margin: 30px auto;
+  width: 900px;
 }
 
 .fa-search {

@@ -25,9 +25,11 @@ const HomePage = () => {
         <p>PlanetSide 2 is a massively-multiplayer online science fiction game where thousands of players on one server fight to expand their faction's territory.</p>
         <p>This site makes the stats and information from the Planetside 2 API easily accessible and understandable.</p>
         <FactionPage />
-        <Box className="factionbasic" pad="large" margin="small" animation="fadeIn">
-          <h1>Well-known players:</h1>
-          <p>Check out the stat pages of popular community members.</p>
+        <Box className="factionbasicnooutline" pad="large" margin="small" animation="fadeIn">
+          <Box className="basicnooutline" animation="fadeIn">
+            <h1>Well-known players:</h1>
+            <h3>Check out the stat pages of popular community members.</h3>
+          </Box>
           <Box direction="row" justify="evenly" alignContent="center" wrap={true} animation="fadeIn">
             {communityMembers.map(member => {
               return (
