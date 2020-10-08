@@ -27,8 +27,8 @@ const HomePage = () => {
         <FactionPage />
         <Box className="factionbasicnooutline" pad="large" margin="small" animation="fadeIn">
           <Box className="basicnooutline" animation="fadeIn">
-            <h1>Well-known players:</h1>
-            <h3>Check out the stat pages of popular community members.</h3>
+            <h1>Well-known players</h1>
+            <h3>Check out the stat pages of popular community members</h3>
           </Box>
           <Box direction="row" justify="evenly" alignContent="center" wrap={true} animation="fadeIn">
             {communityMembers.map(member => {
@@ -39,8 +39,8 @@ const HomePage = () => {
               )
             })}
           </Box>
+          <LeaderboardPage />
         </Box>
-        <LeaderboardPage />
       </Box>
     </Main>
   )
