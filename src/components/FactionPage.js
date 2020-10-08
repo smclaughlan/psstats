@@ -70,6 +70,7 @@ const FactionPage = () => {
   return (
     <Box className="factionbasic" animation="fadeIn">
       <h1>Factions</h1>
+      <h3>Below are descriptions of the playable factions within the game</h3>
       {factionData ? factionData.faction_list.map(faction => {
         if (Number.parseInt(faction.faction_id) === 0) return null;
         return (
