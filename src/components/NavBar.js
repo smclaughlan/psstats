@@ -24,9 +24,6 @@ const NavBar = () => {
             <NavLink to={"/classes"}>
               <Text href="/" color="white" hoverIndicator>Classes</Text>
             </NavLink>
-            <NavLink to={"/leaderboard"}>
-              <Text href="/" color="white" hoverIndicator>Leaderboard</Text>
-            </NavLink>
           </Box>
         }
       >
