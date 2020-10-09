@@ -34,7 +34,7 @@ const HomePage = () => {
             {communityMembers.map(member => {
               return (
                 <NavLink to={`/char/${member}`} key={member}>
-                  <Button className="searchRes" href={`/char/${member}`} margin="medium" label={member} size="medium" />
+                  <Button className="searchRes" margin="medium" label={member} size="medium" />
                 </NavLink>
               )
             })}
