@@ -11,9 +11,9 @@ import CharacterOneLife from './CharacterOneLife';
 import CharacterClassTime from './CharacterClassTime';
 import MDE from './MDE';
 import ReactMarkdown from 'react-markdown';
-import * as Showdown from 'showdown';
+// import * as Showdown from 'showdown';
 import moment from 'moment';
-import { userAuth0, useAuth0 } from '@auth0/auth0-react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { NavLink } from 'react-router-dom';
 
 import Elusive1Page from './userPages/elusive1';
