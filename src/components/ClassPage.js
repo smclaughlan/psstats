@@ -5,7 +5,7 @@ import ClassDetail from './ClassDetail';
 import Loading from './Loading';
 import Attribution from './Attribution';
 
-const ClassPage = () => {
+function ClassPage() {
   const [classData, setClassData] = React.useState(null);
 
   const getClassData = async () => {
