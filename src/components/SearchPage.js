@@ -3,7 +3,7 @@ import { Form, TextInput, Paragraph, Main, Box, Button, Select } from 'grommet';
 import { backEndURL } from '../config';
 import { NavLink } from 'react-router-dom';
 
-const SearchPage = () => {
+function SearchPage() {
   const [value, setValue] = React.useState('');
   const [results, setResults] = React.useState(null);
   const [selectValue, setSelectValue] = React.useState('Character');
