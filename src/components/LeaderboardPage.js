@@ -4,7 +4,7 @@ import { Box, Button } from 'grommet';
 import Loading from './Loading';
 import { timeFormat, commaFormat } from './util';
 
-const LeaderboardPage = () => {
+function LeaderboardPage() {
   const [dataScore, setDataScore] = React.useState(null);
   const [dataTime, setDataTime] = React.useState(null);
   const [dataKills, setDataKills] = React.useState(null);
