@@ -28,7 +28,7 @@ import FlashyPage from './userPages/flashy';
 import ArsheeTVPage from './userPages/arsheetv';
 
 
-const CharacterPage = () => {
+function CharacterPage() {
   const [data, setData] = React.useState(null);
   const [dataId, setDataId] = React.useState(null);
   const [commentData, setCommentData] = React.useState(null);
