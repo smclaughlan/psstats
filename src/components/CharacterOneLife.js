@@ -3,7 +3,7 @@ import { Box, Table, TableHeader, TableBody, TableRow, TableCell } from 'grommet
 import Loading from './Loading';
 import { commaFormat } from './util.js';
 
-const CharacterOneLife = ({ main_class, stats, stats_history, dataId }) => {
+function CharacterOneLife({ main_class, stats, stats_history, dataId }) {
   const [records, setRecords] = React.useState(null);
 
   const getRecords = () => {
