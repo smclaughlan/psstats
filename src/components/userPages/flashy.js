@@ -2,7 +2,7 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 import { Box } from 'grommet';
 
-const FlashyPage = () => {
+function FlashyPage() {
 
   return (
     <Box animation="fadeIn" className="basic" align="center">
