@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, DataTable, Meter } from 'grommet';
 import Loading from './Loading';
 
-const CharacterClassTime = (dataId) => {
+function CharacterClassTime(dataId) {
   const [playTimes, setPlayTimes] = React.useState(null);
 
 
