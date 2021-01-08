@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, DataTable, Meter } from 'grommet';
 import Loading from './Loading';
 
-const CharacterClassAccuracy = ({ stats }) => {
+function CharacterClassAccuracy({ stats }) {
 
   const getChartData = stats => {
     let chartData = [];
