@@ -4,7 +4,7 @@ import { Box, Main, Button } from 'grommet';
 import FactionPage from './FactionPage';
 import LeaderboardPage from './LeaderboardPage';
 
-const HomePage = () => {
+function HomePage() {
   let communityMembers = [
     "elusive1",
     "PattyFatHead",
