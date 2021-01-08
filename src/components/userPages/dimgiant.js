@@ -2,7 +2,7 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 import { Box } from 'grommet';
 
-const DimGiantPage = () => {
+function DimGiantPage() {
 
   return (
     <Box animation="fadeIn" className="basic" align="center">
