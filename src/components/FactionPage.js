@@ -5,7 +5,7 @@ import Loading from './Loading';
 import ReactPlayer from 'react-player';
 import Attribution from './Attribution';
 
-const FactionPage = () => {
+function FactionPage() {
   const [factionData, setFactionData] = React.useState(null);
 
   const getFactionData = async () => {
