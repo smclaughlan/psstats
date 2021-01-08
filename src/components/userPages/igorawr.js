@@ -2,7 +2,7 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 import { Box } from 'grommet';
 
-const IGoRawrPage = () => {
+function IGoRawrPage() {
 
   return (
     <Box animation="fadeIn" className="basic" align="center">
