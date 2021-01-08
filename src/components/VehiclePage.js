@@ -2,7 +2,7 @@ import React from 'react';
 import { Box } from 'grommet';
 import { backEndURL, imgURL } from '../config';
 
-const VehiclePage = () => {
+function VehiclePage() {
   const [vehData, setVehData] = React.useState(null);
 
   const getVehData = async vehicle => {
