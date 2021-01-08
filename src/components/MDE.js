@@ -15,7 +15,7 @@ const converter = new Showdown.Converter({
   tasklists: true
 });
 
-const MDE = (props) => {
+function MDE(props) {
   const [value, setValue] = React.useState("");
   const [postLoaded, setPostLoaded] = React.useState(false);
   const [selectedTab, setSelectedTab] = React.useState("write");
