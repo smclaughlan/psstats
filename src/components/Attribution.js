@@ -1,7 +1,7 @@
 import React from 'react';
 import { Anchor, Box } from 'grommet';
 
-const Attribution = () => {
+function Attribution() {
 
   return (
     <Box animation="fadeIn">
