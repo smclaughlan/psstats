@@ -2,7 +2,7 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 import { Box } from 'grommet';
 
-const Elusive1Page = () => {
+function Elusive1Page() {
 
   return (
     <Box animation="fadeIn" className="basic" align="center">
