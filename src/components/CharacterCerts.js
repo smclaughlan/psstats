@@ -3,7 +3,7 @@ import { Box, Table, TableHeader, TableBody, TableRow, TableCell } from 'grommet
 import Loading from './Loading';
 import { commaFormat } from './util.js';
 
-const CharacterCerts = ({ certs }) => {
+function CharacterCerts({ certs }) {
 
   return (certs ?
     <Box margin="large">
