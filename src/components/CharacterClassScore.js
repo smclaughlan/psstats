@@ -3,7 +3,7 @@ import { Box, DataTable, Meter } from 'grommet';
 import Loading from './Loading';
 import { commaFormat } from './util.js';
 
-const CharacterClassScore = ({ stats }) => {
+function CharacterClassScore({ stats }) {
 
   const getChartData = stats => {
     let chartData = [];
