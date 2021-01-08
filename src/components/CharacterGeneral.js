@@ -3,7 +3,7 @@ import { Box, Table, TableHeader, TableBody, TableRow, TableCell } from 'grommet
 import Loading from './Loading';
 import { commaFormat } from './util.js';
 
-const CharacterGeneral = ({ main_class, stats, stats_history, dataId }) => {
+function CharacterGeneral({ main_class, stats, stats_history, dataId }) {
 
   const getKDR = (kills, deaths) => {
     let tempKDR = (parseInt(kills) / parseInt(deaths)).toString();
