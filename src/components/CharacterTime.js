@@ -3,7 +3,7 @@ import { Box, Table, TableHeader, TableBody, TableRow, TableCell } from 'grommet
 import Loading from './Loading';
 import { timeFormat, commaFormat } from './util';
 
-const CharacterTime = ({ times }) => {
+function CharacterTime({ times }) {
 
   return (times ?
     <Box margin="large">
