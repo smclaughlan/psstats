@@ -3,7 +3,7 @@ import { Box } from 'grommet';
 import { imgURL } from '../config';
 import Loading from './Loading';
 
-const ClassDetail = ({ profile }) => {
+function ClassDetail({ profile }) {
 
   const createDesc = profileName => { //from planetside 2 wiki, creative commons attribution
     if (profileName === "Infiltrator") {
