@@ -54,6 +54,7 @@ function CharacterPage() {
       if (res.ok) {
         const resData = await res.json();
         if (resData && resData.character_list && resData.character_list[0]) setData(resData.character_list[0]);
+        else getCharData();
       }
     } catch (err) {
       console.error(err);
