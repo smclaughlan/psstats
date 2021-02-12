@@ -28,7 +28,7 @@ function ClassPage() {
     <Box className="basic" alignSelf="center" width="900px" animation="fadeIn" style={{ marginTop: "100px" }}>
       <h1>Classes</h1>
       <Tabs>
-        {classData ? classData.profile_list.map(profile => {
+        {classData && classData.profile_list ? classData.profile_list.map(profile => {
           return (
             <Tab title={profile.name.en} key={profile.name.en}>
               <ClassDetail profile={profile} />
