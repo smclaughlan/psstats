@@ -53,7 +53,7 @@ function CharacterPage() {
       const res = await fetch(`${backEndURL}/char/${name}`);
       if (res.ok) {
         const resData = await res.json();
-        resData.character_list[0] && setData(resData.character_list[0]);
+        resData && resData.character_list[0] && setData(resData.character_list[0]);
       }
     } catch (err) {
       console.error(err);
