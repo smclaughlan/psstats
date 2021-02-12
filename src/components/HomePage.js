@@ -30,7 +30,7 @@ function HomePage() {
             <h1>Well-known players</h1>
             <h3>Check out the stat pages of popular community members</h3>
           </Box>
-          <Box direction="row" justify="evenly" alignContent="center" wrap={true} animation="fadeIn">
+          <Box direction="row" justify="center" alignContent="center" wrap={true} animation="fadeIn">
             {communityMembers.map(member => {
               return (
                 <NavLink to={`/char/${member}`} key={member}>
