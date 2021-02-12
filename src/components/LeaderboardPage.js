@@ -38,7 +38,7 @@ function LeaderboardPage() {
       <Box direction="row" animation="fadeIn">
         <Box className="basic">
           <h2>Score:</h2>
-          {dataScore ? dataScore.leaderboard_list.map(character => {
+          {dataScore && dataScore.leaderboard_list ? dataScore.leaderboard_list.map(character => {
             return (
               <Box key={character.name.first}>
                 <Button className="searchRes" href={`/char/${character.name.first}`} margin="medium" label={`${Number.parseInt(character.rank) + 1}. ${character.name.first}`} size="medium" />
@@ -51,7 +51,7 @@ function LeaderboardPage() {
         </Box>
         <Box className="basic">
           <h2>Play time:</h2>
-          {dataTime ? dataTime.leaderboard_list.map(character => {
+          {dataTime && dataTime.leaderboard_list ? dataTime.leaderboard_list.map(character => {
             return (
               <Box key={character.name.first}>
                 <Button className="searchRes" href={`/char/${character.name.first}`} margin="medium" label={`${Number.parseInt(character.rank) + 1}. ${character.name.first}`} size="medium" />
@@ -64,7 +64,7 @@ function LeaderboardPage() {
         </Box>
         <Box className="basic">
           <h2>Kills:</h2>
-          {dataKills ? dataKills.leaderboard_list.map(character => {
+          {dataKills && dataKills.leaderboard_list ? dataKills.leaderboard_list.map(character => {
             return (
               <Box key={character.name.first}>
                 <Button className="searchRes" href={`/char/${character.name.first}`} margin="medium" label={`${Number.parseInt(character.rank) + 1}. ${character.name.first}`} size="medium" />
