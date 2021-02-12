@@ -101,7 +101,8 @@ function CharacterPage() {
           const charIdRes = await fetch(`${backEndURL}/charid/${charId}`);
           if (charIdRes.ok) {
             const charIdData = await charIdRes.json();
-            setDataId(charIdData.character_list[0]);
+            if (charIdData && charIdData.character_list && charIdData.character_list[0]) setDataId(charIdData.character_list[0]);
+            else getCharIdData();
           }
         } catch (err) {
           console.error(err);
