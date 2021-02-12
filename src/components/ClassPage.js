@@ -30,7 +30,7 @@ function ClassPage() {
       <Tabs>
         {classData ? classData.profile_list.map(profile => {
           return (
-            <Tab title={profile.name.en}>
+            <Tab title={profile.name.en} key={profile.name.en}>
               <ClassDetail profile={profile} />
             </Tab>
           )
