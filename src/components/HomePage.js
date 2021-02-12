@@ -7,7 +7,7 @@ import LeaderboardPage from './LeaderboardPage';
 function HomePage() {
   let communityMembers = [
     "elusive1",
-    "PattyFatHead",
+    // "PattyFatHead",
     "CAMIKAZE78",
     "Moukass",
     "lillbabs",
