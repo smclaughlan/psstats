@@ -9,6 +9,7 @@ import CharacterClassScore from './CharacterClassScore';
 import CharacterClassAccuracy from './CharacterClassAccuracy';
 import CharacterOneLife from './CharacterOneLife';
 import CharacterClassTime from './CharacterClassTime';
+import Footer from './Footer';
 import MDE from './MDE';
 import ReactMarkdown from 'react-markdown';
 // import * as Showdown from 'showdown';
@@ -113,120 +114,123 @@ function CharacterPage() {
   }, [data]);
 
   return (data && dataId ?
-    <div className="basic">
-      <Box animation="fadeIn" align="center">
-        <h1><img width="20" alt={data.main_class.name.en} src={`${imgURL}${data.main_class.image_path}`} />{data.name.first}</h1 >
-        <h2><img width="20" alt={data.faction.name.en} src={`${imgURL}${data.faction.image_path}`} /> {data.faction.name.en}</h2>
-        <div>
-          {data.outfit_member ?
-            <NavLink to={`/outfit/${data.outfit_member.outfit.outfit_id}`}>
-              <Button href={`/outfit/${data.outfit_member.outfit.outfit_id}`} label={data.outfit_member.outfit.name} />
-            </NavLink>
-            : null
-          }
-        </div>
-        <h3>BR: {data.battle_rank.value}</h3>
-        {data.online_status === "1" ? <h3 className="displayOnline">Online</h3> : <h3 className="displayOffline">Offline</h3>}
-      </Box>
+    <>
+      <div className="basic">
+        <Box animation="fadeIn" align="center">
+          <h1><img width="20" alt={data.main_class.name.en} src={`${imgURL}${data.main_class.image_path}`} />{data.name.first}</h1 >
+          <h2><img width="20" alt={data.faction.name.en} src={`${imgURL}${data.faction.image_path}`} /> {data.faction.name.en}</h2>
+          <div>
+            {data.outfit_member ?
+              <NavLink to={`/outfit/${data.outfit_member.outfit.outfit_id}`}>
+                <Button href={`/outfit/${data.outfit_member.outfit.outfit_id}`} label={data.outfit_member.outfit.name} />
+              </NavLink>
+              : null
+            }
+          </div>
+          <h3>BR: {data.battle_rank.value}</h3>
+          {data.online_status === "1" ? <h3 className="displayOnline">Online</h3> : <h3 className="displayOffline">Offline</h3>}
+        </Box>
 
-      {characterPageName === "elusive1" ?
-        <Elusive1Page />
-        :
-        <></>}
-      {characterPageName === "iGoRawrrrr" ?
-        <IGoRawrPage />
-        :
-        <></>}
-      {characterPageName === "PattyFatHead" ?
-        <CyriousPage />
-        :
-        <></>}
-      {characterPageName === "CAMIKAZE78" ?
-        <CAMIKAZE78Page />
-        :
-        <></>}
-      {characterPageName === "Moukass" ?
-        <MoukassPage />
-        :
-        <></>}
-      {characterPageName === "lillbabs" ?
-        <LBPage />
-        :
-        <></>}
-      {characterPageName === "DimGiant" ?
-        <DimGiantPage />
-        :
-        <></>}
-      {characterPageName === "FabertheOne" ?
-        <FaberOnePage />
-        :
-        <></>}
-      {characterPageName === "Flashy" ?
-        <FlashyPage />
-        :
-        <></>}
-      {characterPageName === "ArsheeTV" ?
-        <ArsheeTVPage />
-        :
-        <></>}
-
-
-      <Box animation="fadeIn" className="basic" align="center">
-        <Tabs>
-          <Tab title="General">
-            <CharacterGeneral dataId={dataId} {...data} />
-          </Tab>
-          <Tab title="One life records">
-            <CharacterOneLife dataId={dataId} {...data} />
-          </Tab>
-          <Tab title="Time">
-            <CharacterTime {...data} />
-          </Tab>
-          <Tab title="Certs">
-            <CharacterCerts {...data} />
-          </Tab>
-        </Tabs>
-      </Box>
-      <Box animation="fadeIn" className="basic" align="center">
-        <Tabs>
-          <Tab title="Score per class">
-            <CharacterClassScore {...data} />
-          </Tab>
-          <Tab title="Accuracy per class">
-            <CharacterClassAccuracy {...data} />
-          </Tab>
-          <Tab title="Relative time per class">
-            <CharacterClassTime {...dataId} />
-          </Tab>
-        </Tabs>
-      </Box>
-      <Box>
-        {commentData && commentData.length > 0 ?
-          <>
-            <h1>Comments:</h1>
-            {commentData.map(post => {
-              let postId = post.id;
-              return (
-                <>
-                  {post.email === email ? <h4>{post.name} - {moment(post.createdAt)
-                    .toDate()
-                    .toLocaleString()} - <Button className="searchRes" onClick={() => { delPost(postId) }}>X</Button></h4>
-                    :
-                    <h4>{post.name} - {moment(post.createdAt)
-                      .toDate()
-                      .toLocaleString()}</h4>
-                  }
-                  <ReactMarkdown source={post.body} />
-                </>
-              )
-            })}
-          </>
+        {characterPageName === "elusive1" ?
+          <Elusive1Page />
           :
-          <>
-          </>}
-      </Box>
-      <MDE name={data.name.first} gc={getComments} />
-    </div>
+          <></>}
+        {characterPageName === "iGoRawrrrr" ?
+          <IGoRawrPage />
+          :
+          <></>}
+        {characterPageName === "PattyFatHead" ?
+          <CyriousPage />
+          :
+          <></>}
+        {characterPageName === "CAMIKAZE78" ?
+          <CAMIKAZE78Page />
+          :
+          <></>}
+        {characterPageName === "Moukass" ?
+          <MoukassPage />
+          :
+          <></>}
+        {characterPageName === "lillbabs" ?
+          <LBPage />
+          :
+          <></>}
+        {characterPageName === "DimGiant" ?
+          <DimGiantPage />
+          :
+          <></>}
+        {characterPageName === "FabertheOne" ?
+          <FaberOnePage />
+          :
+          <></>}
+        {characterPageName === "Flashy" ?
+          <FlashyPage />
+          :
+          <></>}
+        {characterPageName === "ArsheeTV" ?
+          <ArsheeTVPage />
+          :
+          <></>}
+
+
+        <Box animation="fadeIn" className="basic" align="center">
+          <Tabs>
+            <Tab title="General">
+              <CharacterGeneral dataId={dataId} {...data} />
+            </Tab>
+            <Tab title="One life records">
+              <CharacterOneLife dataId={dataId} {...data} />
+            </Tab>
+            <Tab title="Time">
+              <CharacterTime {...data} />
+            </Tab>
+            <Tab title="Certs">
+              <CharacterCerts {...data} />
+            </Tab>
+          </Tabs>
+        </Box>
+        <Box animation="fadeIn" className="basic" align="center">
+          <Tabs>
+            <Tab title="Score per class">
+              <CharacterClassScore {...data} />
+            </Tab>
+            <Tab title="Accuracy per class">
+              <CharacterClassAccuracy {...data} />
+            </Tab>
+            <Tab title="Relative time per class">
+              <CharacterClassTime {...dataId} />
+            </Tab>
+          </Tabs>
+        </Box>
+        <Box>
+          {commentData && commentData.length > 0 ?
+            <>
+              <h1>Comments:</h1>
+              {commentData.map(post => {
+                let postId = post.id;
+                return (
+                  <>
+                    {post.email === email ? <h4>{post.name} - {moment(post.createdAt)
+                      .toDate()
+                      .toLocaleString()} - <Button className="searchRes" onClick={() => { delPost(postId) }}>X</Button></h4>
+                      :
+                      <h4>{post.name} - {moment(post.createdAt)
+                        .toDate()
+                        .toLocaleString()}</h4>
+                    }
+                    <ReactMarkdown source={post.body} />
+                  </>
+                )
+              })}
+            </>
+            :
+            <>
+            </>}
+        </Box>
+        <MDE name={data.name.first} gc={getComments} />
+      </div>
+      <Footer />
+    </>
     :
     <Loading />
   )

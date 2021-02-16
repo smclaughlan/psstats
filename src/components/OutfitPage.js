@@ -10,6 +10,7 @@ import ReactMarkdown from 'react-markdown';
 import moment from 'moment';
 import { userAuth0, useAuth0 } from '@auth0/auth0-react';
 import { NavLink } from 'react-router-dom';
+import Footer from './Footer';
 
 function OutfitPage() {
   const [data, setData] = React.useState(null);
@@ -171,75 +172,78 @@ function OutfitPage() {
   }, [members])
 
   return (data && members && factionMemberData ?
-    <div className="basicwide">
-      <Box className="basicwide" direction="row" justify="evenly" animation="fadeIn">
-        <Box>
-          <h1>{data.outfit_list[0].alias}</h1 >
-          <h2>{data.outfit_list[0].name}</h2>
-          <h3>Creation Date: {data.outfit_list[0].time_created_date.split(' ')[0]}</h3>
-          <h3>Member Count: {data.outfit_list[0].member_count}</h3>
+    <>
+      <div className="basicwide">
+        <Box className="basicwide" direction="row" justify="evenly" animation="fadeIn">
+          <Box>
+            <h1>{data.outfit_list[0].alias}</h1 >
+            <h2>{data.outfit_list[0].name}</h2>
+            <h3>Creation Date: {data.outfit_list[0].time_created_date.split(' ')[0]}</h3>
+            <h3>Member Count: {data.outfit_list[0].member_count}</h3>
+          </Box>
+          <img width="300" alt={factionMemberData.faction.name.en} src={`${imgURL}${factionMemberData.faction.image_path}`} />
         </Box>
-        <img width="300" alt={factionMemberData.faction.name.en} src={`${imgURL}${factionMemberData.faction.image_path}`} />
-      </Box>
-      <Box className="basicwide" animation="fadeIn">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableCell></TableCell>
-              <TableCell><Button label="Class" onClick={() => { sortMembers(members, "class") }} /></TableCell>
-              <TableCell><Button label="Name" onClick={() => { sortMembers(members, "name") }} /></TableCell>
-              <TableCell><Button label="Outfit Rank" onClick={() => { sortMembers(members, "outfitrank") }} /></TableCell>
-              <TableCell><Button label="Battle Rank" onClick={() => { sortMembers(members, "battlerank") }} /></TableCell>
-              <TableCell><Button label="Kill/Death Ratio" onClick={() => { sortMembers(members, "kdr") }} /></TableCell>
-              <TableCell><Button label="Online Status" onClick={() => { sortMembers(members, "online") }} /></TableCell>
-            </TableRow>
-            {members.map((member, idx) => {
-              return (
-                <TableRow key={member.name.first} className="outfitTableRow">
-                  <TableCell>{idx + 1}</TableCell>
-                  <TableCell><img width="30" alt={member.main_class[0].name.en} src={`${imgURL}${member.main_class[0].image_path}`} /></TableCell>
-                  <TableCell>
-                    <NavLink to={`/char/${member.name.first}`}>
-                      <Button label={member.name.first} href={`/char/${member.name.first}`} />
-                    </NavLink>
-                  </TableCell>
-                  <TableCell>{member.rank_ordinal}. {member.rank}</TableCell>
-                  <TableCell>{member.battle_rank.value}</TableCell>
-                  <TableCell>{member.kdr}</TableCell>
-                  {member.online_status === "1" ? <TableCell className="displayOnline">Online</TableCell> : <TableCell className="displayOffline">Offline</TableCell>}
-                </TableRow>
-              )
-            })}
-          </TableHeader>
-        </Table>
-      </Box>
-      <Box>
-        {commentData && commentData.length > 0 ?
-          <>
-            <h1>Comments:</h1>
-            {commentData.map(post => {
-              let postId = post.id;
-              return (
-                <>
-                  {post.email === email ? <h4>{post.name} - {moment(post.createdAt)
-                    .toDate()
-                    .toLocaleString()} - <Button className="searchRes" onClick={() => { delPost(postId) }}>X</Button></h4>
-                    :
-                    <h4>{post.name} - {moment(post.createdAt)
+        <Box className="basicwide" animation="fadeIn">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableCell></TableCell>
+                <TableCell><Button label="Class" onClick={() => { sortMembers(members, "class") }} /></TableCell>
+                <TableCell><Button label="Name" onClick={() => { sortMembers(members, "name") }} /></TableCell>
+                <TableCell><Button label="Outfit Rank" onClick={() => { sortMembers(members, "outfitrank") }} /></TableCell>
+                <TableCell><Button label="Battle Rank" onClick={() => { sortMembers(members, "battlerank") }} /></TableCell>
+                <TableCell><Button label="Kill/Death Ratio" onClick={() => { sortMembers(members, "kdr") }} /></TableCell>
+                <TableCell><Button label="Online Status" onClick={() => { sortMembers(members, "online") }} /></TableCell>
+              </TableRow>
+              {members.map((member, idx) => {
+                return (
+                  <TableRow key={member.name.first} className="outfitTableRow">
+                    <TableCell>{idx + 1}</TableCell>
+                    <TableCell><img width="30" alt={member.main_class[0].name.en} src={`${imgURL}${member.main_class[0].image_path}`} /></TableCell>
+                    <TableCell>
+                      <NavLink to={`/char/${member.name.first}`}>
+                        <Button label={member.name.first} href={`/char/${member.name.first}`} />
+                      </NavLink>
+                    </TableCell>
+                    <TableCell>{member.rank_ordinal}. {member.rank}</TableCell>
+                    <TableCell>{member.battle_rank.value}</TableCell>
+                    <TableCell>{member.kdr}</TableCell>
+                    {member.online_status === "1" ? <TableCell className="displayOnline">Online</TableCell> : <TableCell className="displayOffline">Offline</TableCell>}
+                  </TableRow>
+                )
+              })}
+            </TableHeader>
+          </Table>
+        </Box>
+        <Box>
+          {commentData && commentData.length > 0 ?
+            <>
+              <h1>Comments:</h1>
+              {commentData.map(post => {
+                let postId = post.id;
+                return (
+                  <>
+                    {post.email === email ? <h4>{post.name} - {moment(post.createdAt)
                       .toDate()
-                      .toLocaleString()}</h4>
-                  }
-                  <ReactMarkdown source={post.body} />
-                </>
-              )
-            })}
-          </>
-          :
-          <>
-          </>}
-      </Box>
-      <MDE name={data.outfit_list[0].alias} gc={getComments} />
-    </div>
+                      .toLocaleString()} - <Button className="searchRes" onClick={() => { delPost(postId) }}>X</Button></h4>
+                      :
+                      <h4>{post.name} - {moment(post.createdAt)
+                        .toDate()
+                        .toLocaleString()}</h4>
+                    }
+                    <ReactMarkdown source={post.body} />
+                  </>
+                )
+              })}
+            </>
+            :
+            <>
+            </>}
+        </Box>
+        <MDE name={data.outfit_list[0].alias} gc={getComments} />
+      </div>
+      <Footer />
+    </>
     :
     <Loading />
   )
