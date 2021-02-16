@@ -9,6 +9,7 @@ import LeaderboardPage from './components/LeaderboardPage';
 import VehiclePage from './components/VehiclePage';
 import ClassPage from './components/ClassPage';
 import FactionPage from './components/FactionPage';
+import Footer from './components/Footer';
 import Auth0ProviderHistory from './auth0provider';
 
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/search" component={SearchPage} />
           <Route path="/" component={HomePage} />
         </Switch>
+        <Footer />
       </Auth0ProviderHistory>
     </BrowserRouter>
   );
