@@ -1,16 +1,24 @@
-This project utilizes the Planetside2 API to make information and statistics easily accessible. See the [live version](https://psstats.herokuapp.com/).
+# PlanetSide Stats
+*By Sean McLaughlan - [Visit PlanetSide Stats](https://psstats.herokuapp.com/)*
 
-* [Feature list](https://github.com/smclaughlan/psstats/blob/master/documentation/feature-list/features.md)
-* [Components](https://github.com/smclaughlan/psstats/blob/master/documentation/feature-packet/components.md)
+**Table of Contents**
+- [PlanetSide Stats](#planetside-stats)
+  - [PlanetSide Stats at a Glance](#planetside-stats-at-a-glance)
+    - [Leaderboards](#leaderboards)
+    - [Search](#search)
+    - [Character or outfit stats](#character-or-outfit-stats)
+    - [Information](#information)
+  - [Front-end](#front-end)
+    - [React](#react)
+    - [Grommet](#grommet)
+  - [Back-end](#back-end)
+    - [PostgreSQL](#postgresql)
+    - [PlanetSide 2's API](#planetside-2s-api)
+  - [Conclusion](#conclusion)
 
-## Technologies
+## PlanetSide Stats at a Glance
 
-* React
-* JavaScript
-* Grommet
-* Already existing API
-
-## Features
+This project utilizes the Planetside2 API to make information and statistics from the game easily accessible.
 
 ### Leaderboards
 
@@ -41,6 +49,28 @@ Clicking the headers on the table will sort by that column.
 
 ### Information
 
-There are pages for general information about factions, vehicles, and character classes as well.
+There is also a page for general information about character classes as well.
 
 ![](documentation/images/infoclasses.png)
+
+<!-- * [Feature list](https://github.com/smclaughlan/psstats/blob/master/documentation/feature-list/features.md)
+* [Components](https://github.com/smclaughlan/psstats/blob/master/documentation/feature-packet/components.md) -->
+
+## Front-end
+The front-end utilizes JavaScript, React, and Grommet.
+
+### React
+
+### Grommet
+
+## Back-end
+
+### PostgreSQL
+
+### PlanetSide 2's API
+
+
+## Conclusion
+
+- about learning react
+- learning to use grommet, display charts/data
