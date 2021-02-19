@@ -60,14 +60,57 @@ There is a page for general information about character classes as well.
 The front-end utilizes JavaScript, React, and Grommet.
 
 ### React
+React gives PlanetSide Stats quick navigation.
 
 ### Grommet
+Grommet is a React component library that PlanetSide Stats makes heavy use of in displaying stats. The DataTable and Meter components were especially helpful in this case.
+
+![](documentation/images/scoreperclass.png)
+
+```jsx
+//CharacterClassScore.js
+return (stats ?
+    <Box>
+      <h3>Score per class</h3>
+      <DataTable
+        columns={[
+          {
+            property: 'name',
+            header: <h3>Class</h3>,
+            primary: true,
+          },
+          {
+            property: 'value',
+            header: <h3>Score</h3>,
+            render: datum => (
+              <Box pad={{ vertical: 'xsmall' }}>
+                <Meter
+                  values={[{ value: datum.value }]}
+                  thickness="medium"
+                  size="medium"
+                  max={getHighestScore(stats)}
+                />
+              </Box>
+            ),
+          },
+          {
+            property: 'valueWithCommas',
+            header: '',
+          }
+        ]}
+        data={getChartData(stats)}
+      />
+    </Box>
+    :
+    <Loading />)
+```
 
 ## Back-end
 
 ### PostgreSQL
 
 ### PlanetSide 2's API
+The PlanetSide 2 API offers the raw data seen on the site. It is unfortunately the biggest hindrance to the site's speed, causing some pages to take longer to reload.
 
 
 ## Conclusion
