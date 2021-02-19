@@ -135,4 +135,4 @@ router.get('/outfit/:id', cors(), async function (req, res, next) { //get specif
 The requests for the API can get quite complicated and I reached out to some other people who were also working with it. Together, we were able to get all the necessary data we needed for our respective projects.
 
 ## Conclusion
-My focus with this project was learning more about React. I used it as an opportunity to use functional components with hooks and the Grommet component library.
+My focus with this project was learning more about React. I used it as an opportunity to get a better understanding of functional components with hooks, utilizing a third party API, and the Grommet component library.
