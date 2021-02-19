@@ -10,6 +10,7 @@
     - [Classes Information](#classes-information)
   - [Front-end](#front-end)
     - [React](#react)
+    - [Auth0](#auth0)
     - [Grommet](#grommet)
   - [Back-end](#back-end)
     - [PostgreSQL](#postgresql)
@@ -62,6 +63,9 @@ The front-end utilizes JavaScript, React, and Grommet.
 ### React
 React gives PlanetSide Stats quick navigation.
 
+### Auth0
+Auth0 is used for logging in users with their accounts on popular services such as Google. This also means user data doesn't need to be saved to the database.
+
 ### Grommet
 Grommet is a React component library that PlanetSide Stats makes heavy use of in displaying stats. The DataTable and Meter components were especially helpful in this case.
 
@@ -106,14 +110,13 @@ return (stats ?
 ```
 
 ## Back-end
+The back-end is light, and primarily needed to provide security for the the API key and comments.
 
 ### PostgreSQL
+The database for this project only holds comments as the vast majority of the information comes from the API mentioned below.
 
 ### PlanetSide 2's API
-The PlanetSide 2 API offers the raw data seen on the site. It is unfortunately the biggest hindrance to the site's speed, causing some pages to take longer to reload.
-
+The PlanetSide 2 API offers the raw data seen on the site. It is unfortunately the bottleneck to the site's speed, causing some pages to take longer to reload.
 
 ## Conclusion
-
-- about learning react
-- learning to use grommet, display charts/data
+My focus with this project was learning more about React. I used it as an opportunity to use functional components with hooks and the component library Grommet to save time.
