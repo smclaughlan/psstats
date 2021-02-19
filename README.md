@@ -7,7 +7,7 @@
     - [Leaderboards](#leaderboards)
     - [Search](#search)
     - [Character or outfit stats](#character-or-outfit-stats)
-    - [Information](#information)
+    - [Classes Information](#classes-information)
   - [Front-end](#front-end)
     - [React](#react)
     - [Grommet](#grommet)
@@ -47,9 +47,9 @@ The stats for an outfit include member count, faction, and basic information abo
 Clicking the headers on the table will sort by that column.
 ![](documentation/images/statsoutfitsort.png)
 
-### Information
+### Classes Information
 
-There is also a page for general information about character classes as well.
+There is a page for general information about character classes as well.
 
 ![](documentation/images/infoclasses.png)
 
