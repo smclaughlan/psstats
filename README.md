@@ -122,4 +122,4 @@ The database for this project only holds comments as the vast majority of the in
 The PlanetSide 2 API offers the raw data seen on the site. It is unfortunately the bottleneck to the site's speed, causing some pages to take longer to reload.
 
 ## Conclusion
-My focus with this project was learning more about React. I used it as an opportunity to use functional components with hooks and the component library Grommet to save time.
+My focus with this project was learning more about React. I used it as an opportunity to use functional components with hooks and the Grommet component library.
