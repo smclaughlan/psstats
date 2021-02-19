@@ -70,7 +70,7 @@ React gives PlanetSide Stats quick navigation.
 Auth0 is used for logging in users with their accounts on popular services such as Google. This also means user data doesn't need to be saved to the database.
 
 ### Grommet
-Grommet is a React component library that PlanetSide Stats makes heavy use of in displaying stats. The DataTable and Meter components were especially helpful in this case.
+Grommet is a React component library that the project makes heavy use of in displaying stats. The DataTable and Meter components were especially helpful in this case.
 
 ![](documentation/images/scoreperclass.png)
 
