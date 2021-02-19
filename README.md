@@ -113,13 +113,26 @@ return (stats ?
 ```
 
 ## Back-end
-The back-end is light, and primarily needed to provide security for the the API key and comments.
+The back-end is a light Node Express server, and primarily needed to provide security for the the API key and handling comments.
 
 ### PostgreSQL
 The database for this project only holds comments as the vast majority of the information comes from the API mentioned below.
 
 ### PlanetSide 2's API
 The PlanetSide 2 API offers the raw data seen on the site. It is unfortunately the bottleneck to the site's speed, causing some pages to take longer to reload.
+
+```js
+router.get('/outfit/:id', cors(), async function (req, res, next) { //get specific outfit info
+  const outfitId = req.params.id;
+  const result = await fetch(`http://census.daybreakgames.com/${process.env.API}/get/ps2:v2/outfit?c:resolve=member_online_status,member_character(times.minutes_played,character_id,member_since_date,battle_rank,prestige_level,name.first,certs.earned_points,certs.gifted_points,profile_id)&c:join=type:profile%5Eon:members.profile_id%5Eto:profile_id%5Elist:1%5Eshow:name.en%27image_path%5Einject_at:main_class&c:join=type:characters_stat_history%5Eon:members.character_id%5Eto:character_id%5Elist:1%5Eshow:stat_name%27all_time%5Einject_at:stats_history%5Eterms:stat_name=deaths%27stat_name=kills&c:join=characters_stat%5Eon:members.character_id%5Eto:character_id%5Elist:1%5Eshow:stat_name%27value_forever%27profile_id%5Elist:1%5Einject_at:stats%5Eterms:stat_name=score%27stat_name=hit_count%27stat_name=fire_count(profile%5Eon:profile_id%5Eto:profile_type_id%5Eshow:name.en%5Einject_at:class)&outfit_id=${outfitId}&c:resolve=member_online_status(online_status),member_character(battle_rank)&c:hide=character_id,member_since`);
+  if (result.ok) {
+    const resJson = await result.json();
+    res.send(resJson);
+  }
+});
+```
+
+The requests for the API can get quite complicated and I reached out to some other people who were also working with it. Together, we were able to get all the necessary data we needed for our respective projects.
 
 ## Conclusion
 My focus with this project was learning more about React. I used it as an opportunity to use functional components with hooks and the Grommet component library.
