@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Text, DropButton, Nav, Box } from "grommet";
+import { Text, Button, DropButton, Nav, Box } from "grommet";
 import { useAuth0 } from '@auth0/auth0-react';
 
 import LogoutButton from './LogoutButton';
@@ -35,7 +35,9 @@ function NavBar() {
         </NavLink>
       </Text>
       { isAuthenticated ? <LogoutButton /> : <LoginButton />}
-      <h2>PlanetSide Stats</h2>
+      <NavLink to={"/"}>
+        <Button color="white" style={{ fontSize: "16px" }}>PlanetSide Stats</Button>
+      </NavLink>
     </Nav >
   )
 }
