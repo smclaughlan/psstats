@@ -57,7 +57,7 @@ function CharacterPage() {
     getAndSetCharIdData();
   }, [data]);
 
-  return data?.main_class && dataId ? (
+  return data && dataId ? (
     <>
       <div className="basic">
         <Box animation="fadeIn" align="center">
