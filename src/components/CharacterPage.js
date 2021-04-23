@@ -11,23 +11,13 @@ import CharacterOneLife from "./CharacterOneLife";
 import CharacterClassTime from "./CharacterClassTime";
 import Comments from "./Comments";
 import Footer from "./Footer";
+import charPageObj from "./userPages/userPages";
 import MDE from "./MDE";
 import ReactMarkdown from "react-markdown";
 // import * as Showdown from 'showdown';
 import moment from "moment";
 import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
-
-import Elusive1Page from "./userPages/elusive1";
-import IGoRawrPage from "./userPages/igorawr";
-import CyriousPage from "./userPages/cyrious";
-import CAMIKAZE78Page from "./userPages/camikaze78";
-import MoukassPage from "./userPages/moukass";
-import LBPage from "./userPages/lb";
-import DimGiantPage from "./userPages/dimgiant";
-import FaberOnePage from "./userPages/faberone";
-import FlashyPage from "./userPages/flashy";
-import ArsheeTVPage from "./userPages/arsheetv";
 
 function CharacterPage() {
   const [data, setData] = React.useState(null);
@@ -51,8 +41,9 @@ function CharacterPage() {
 
   const getCharData = async () => {
     try {
-      const name = window.location.href.split("/")[4];
-      const res = await fetch(`${backEndURL}/char/${name}`);
+      const res = await fetch(
+        `${backEndURL}/char/${characterPageName}`
+      );
       if (res.ok) {
         const resData = await res.json();
         if (
@@ -97,19 +88,6 @@ function CharacterPage() {
     };
     getCharIdData();
   }, [data]);
-
-  const charPageObj = {
-    elusive1: <Elusive1Page />,
-    iGoRawrrrr: <IGoRawrPage />,
-    PattyFatHead: <CyriousPage />,
-    CAMIKAZE78: <CAMIKAZE78Page />,
-    Moukass: <MoukassPage />,
-    lillbabs: <LBPage />,
-    DimGiant: <DimGiantPage />,
-    FabertheOne: <FaberOnePage />,
-    Flashy: <FlashyPage />,
-    ArsheeTV: <ArsheeTVPage />,
-  };
 
   return data && dataId ? (
     <>
