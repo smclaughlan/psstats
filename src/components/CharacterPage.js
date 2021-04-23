@@ -12,6 +12,8 @@ import CharacterClassTime from "./CharacterClassTime";
 import Comments from "./Comments";
 import Footer from "./Footer";
 import charPageObj from "./userPages/userPages";
+import getCharData from "./CharacterPageHelpers/getCharData";
+import getCharIdData from "./CharacterPageHelpers/getCharIdData";
 import MDE from "./MDE";
 import ReactMarkdown from "react-markdown";
 // import * as Showdown from 'showdown';
@@ -39,57 +41,23 @@ function CharacterPage() {
     "/"
   )[4];
 
-  const getCharData = async () => {
-    try {
-      const res = await fetch(
-        `${backEndURL}/char/${characterPageName}`
-      );
-      if (res.ok) {
-        const resData = await res.json();
-        if (
-          resData &&
-          resData.character_list &&
-          resData.character_list[0]
-        )
-          setData(resData.character_list[0]);
-        else getCharData();
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   React.useEffect(() => {
-    getCharData();
+    async function getAndSetData() {
+      const chrRes = await getCharData();
+      setData(chrRes);
+    }
+    getAndSetData();
   }, []);
 
   React.useEffect(() => {
-    const getCharIdData = async () => {
-      if (data) {
-        try {
-          const charId = data.character_id;
-          const charIdRes = await fetch(
-            `${backEndURL}/charid/${charId}`
-          );
-          if (charIdRes.ok) {
-            const charIdData = await charIdRes.json();
-            if (
-              charIdData &&
-              charIdData.character_list &&
-              charIdData.character_list[0]
-            )
-              setDataId(charIdData.character_list[0]);
-            else getCharIdData();
-          }
-        } catch (err) {
-          console.error(err);
-        }
-      }
-    };
-    getCharIdData();
+    async function getAndSetCharIdData() {
+      const chrIdRes = await getCharIdData(data);
+      setDataId(chrIdRes);
+    }
+    getAndSetCharIdData();
   }, [data]);
 
-  return data && dataId ? (
+  return data?.main_class && dataId ? (
     <>
       <div className="basic">
         <Box animation="fadeIn" align="center">
