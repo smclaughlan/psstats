@@ -1,7 +1,6 @@
 import React from "react";
-import { backEndURL, imgURL } from "../config";
 import Loading from "./Loading";
-import { Button, Box, Tabs, Tab } from "grommet";
+import { Box, Tabs, Tab } from "grommet";
 import CharacterTime from "./CharacterTime";
 import CharacterCerts from "./CharacterCerts";
 import CharacterGeneral from "./CharacterGeneral";
@@ -15,28 +14,10 @@ import Footer from "./Footer";
 import charPageObj from "./userPages/userPages";
 import getCharData from "./CharacterPageHelpers/getCharData";
 import getCharIdData from "./CharacterPageHelpers/getCharIdData";
-import MDE from "./MDE";
-import ReactMarkdown from "react-markdown";
-// import * as Showdown from 'showdown';
-import moment from "moment";
-import { useAuth0 } from "@auth0/auth0-react";
-import { NavLink } from "react-router-dom";
 
 function CharacterPage() {
   const [data, setData] = React.useState(null);
   const [dataId, setDataId] = React.useState(null);
-
-  let { isAuthenticated } = useAuth0();
-  let { user } = useAuth0();
-  let name;
-  let email;
-  if (user) {
-    name = user.name;
-    email = user.email;
-  } else {
-    name = "Guest";
-    email = "Guest@Guest.com";
-  }
 
   const characterPageName = window.location.href.split(
     "/"
@@ -106,7 +87,7 @@ function CharacterPage() {
             </Tab>
           </Tabs>
         </Box>
-        <Comments name={data.name.first} email={email} />
+        <Comments name={data.name.first} />
       </div>
       <Footer />
     </>
