@@ -1,14 +1,24 @@
 import React from "react";
-import { Button, Box, Tabs, Tab } from "grommet";
-import { backEndURL, imgURL } from "../config";
+import { Button, Box } from "grommet";
+import { backEndURL } from "../config";
 import MDE from "./MDE";
 import ReactMarkdown from "react-markdown";
 import moment from "moment";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Comments(props) {
   const [commentData, setCommentData] = React.useState(
     null
   );
+
+  let { user } = useAuth0();
+
+  let email;
+  if (user) {
+    email = user.email;
+  } else {
+    email = "Guest@Guest.com";
+  }
 
   const getComments = async () => {
     try {
@@ -26,7 +36,7 @@ function Comments(props) {
 
   const delPost = async (postId) => {
     try {
-      const res = await fetch(`${backEndURL}/comments`, {
+      await fetch(`${backEndURL}/comments`, {
         method: "delete",
         body: JSON.stringify({ id: postId }),
         headers: {
@@ -52,7 +62,7 @@ function Comments(props) {
             let postId = post.id;
             return (
               <>
-                {post.email === props.email ? (
+                {post.email === email ? (
                   <h4>
                     {post.name} -{" "}
                     {moment(post.createdAt)
