@@ -4,8 +4,7 @@ import * as Showdown from "showdown";
 import { Button } from "grommet";
 import "react-mde/lib/styles/css/react-mde-all.css";
 import { backEndURL } from "../config";
-
-import { userAuth0, useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const converter = new Showdown.Converter({
   tables: true,
@@ -34,7 +33,7 @@ function MDE(props) {
   let url = window.location.href;
 
   const newPost = async () => {
-    const res = await fetch(`${backEndURL}/comments`, {
+    await fetch(`${backEndURL}/comments`, {
       method: "post",
       body: JSON.stringify({
         name,
