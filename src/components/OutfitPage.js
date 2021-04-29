@@ -7,11 +7,9 @@ import {
   TableRow,
   TableCell,
 } from "grommet";
-import { backEndURL, imgURL } from "../config";
+import { imgURL } from "../config";
 import Comments from "./Comments";
 import Loading from "./Loading";
-import sortArray from "sort-array";
-import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
 import Footer from "./Footer";
 import getOutfitData from "./OutfitPageHelpers/getOutfitData";
