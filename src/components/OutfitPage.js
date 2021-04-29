@@ -8,10 +8,11 @@ import {
   TableCell,
 } from "grommet";
 import { imgURL } from "../config";
-import Comments from "./Comments";
-import Loading from "./Loading";
 import { NavLink } from "react-router-dom";
+import Comments from "./Comments";
 import Footer from "./Footer";
+import Loading from "./Loading";
+import OutfitPageTableRow from "./OutfitPageTableRow";
 import getOutfitData from "./OutfitPageHelpers/getOutfitData";
 import getMemberData from "./OutfitPageHelpers/getMemberData";
 import sortMembers from "./OutfitPageHelpers/sortMembers";
@@ -95,45 +96,11 @@ function OutfitPage() {
               </TableRow>
               {members.map((member, idx) => {
                 return (
-                  <TableRow
-                    key={member.name.first}
-                    className="outfitTableRow"
-                  >
-                    <TableCell>{idx + 1}</TableCell>
-                    <TableCell>
-                      <img
-                        width="30"
-                        alt={member.main_class[0].name.en}
-                        src={`${imgURL}${member.main_class[0].image_path}`}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <NavLink
-                        to={`/char/${member.name.first}`}
-                      >
-                        <Button
-                          label={member.name.first}
-                          href={`/char/${member.name.first}`}
-                        />
-                      </NavLink>
-                    </TableCell>
-                    <TableCell>
-                      {member.rank_ordinal}. {member.rank}
-                    </TableCell>
-                    <TableCell>
-                      {member.battle_rank.value}
-                    </TableCell>
-                    <TableCell>{member.kdr}</TableCell>
-                    {member.online_status === "1" ? (
-                      <TableCell className="displayOnline">
-                        Online
-                      </TableCell>
-                    ) : (
-                      <TableCell className="displayOffline">
-                        Offline
-                      </TableCell>
-                    )}
-                  </TableRow>
+                  <OutfitPageTableRow
+                    key={idx}
+                    member={member}
+                    idx={idx}
+                  />
                 );
               })}
             </TableHeader>
