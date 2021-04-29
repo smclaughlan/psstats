@@ -25,6 +25,14 @@ function OutfitPage() {
     factionMemberData,
     setFactionMemberData,
   ] = React.useState(null);
+  const [tableColumns, setTableColumns] = React.useState([
+    { label: "Class", config: "class" },
+    { label: "Name", config: "name" },
+    { label: "Outfit Rank", config: "outfitrank" },
+    { label: "Battle Rank", config: "battlerank" },
+    { label: "Kill/Death Ratio", config: "kdr" },
+    { label: "Online Status", config: "online" },
+  ]);
 
   React.useEffect(() => {
     getOutfitData(setData, setMembers);
@@ -70,78 +78,22 @@ function OutfitPage() {
             <TableHeader>
               <TableRow>
                 <TableCell></TableCell>
-                <TableCell>
-                  <Button
-                    label="Class"
-                    onClick={() => {
-                      sortMembers(
-                        members,
-                        "class",
-                        setMembers
-                      );
-                    }}
-                  />
-                </TableCell>
-                <TableCell>
-                  <Button
-                    label="Name"
-                    onClick={() => {
-                      sortMembers(
-                        members,
-                        "name",
-                        setMembers
-                      );
-                    }}
-                  />
-                </TableCell>
-                <TableCell>
-                  <Button
-                    label="Outfit Rank"
-                    onClick={() => {
-                      sortMembers(
-                        members,
-                        "outfitrank",
-                        setMembers
-                      );
-                    }}
-                  />
-                </TableCell>
-                <TableCell>
-                  <Button
-                    label="Battle Rank"
-                    onClick={() => {
-                      sortMembers(
-                        members,
-                        "battlerank",
-                        setMembers
-                      );
-                    }}
-                  />
-                </TableCell>
-                <TableCell>
-                  <Button
-                    label="Kill/Death Ratio"
-                    onClick={() => {
-                      sortMembers(
-                        members,
-                        "kdr",
-                        setMembers
-                      );
-                    }}
-                  />
-                </TableCell>
-                <TableCell>
-                  <Button
-                    label="Online Status"
-                    onClick={() => {
-                      sortMembers(
-                        members,
-                        "online",
-                        setMembers
-                      );
-                    }}
-                  />
-                </TableCell>
+                {tableColumns.map((currCol) => {
+                  return (
+                    <TableCell key={currCol.config}>
+                      <Button
+                        label={`${currCol.label}`}
+                        onClick={() => {
+                          sortMembers(
+                            members,
+                            `${currCol.config}`,
+                            setMembers
+                          );
+                        }}
+                      />
+                    </TableCell>
+                  );
+                })}
               </TableRow>
               {members.map((member, idx) => {
                 return (
