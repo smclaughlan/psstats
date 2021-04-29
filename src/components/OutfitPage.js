@@ -8,7 +8,6 @@ import {
   TableCell,
 } from "grommet";
 import { imgURL } from "../config";
-import { NavLink } from "react-router-dom";
 import Comments from "./Comments";
 import Footer from "./Footer";
 import Loading from "./Loading";
