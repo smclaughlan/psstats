@@ -1,5 +1,47 @@
 import sortArray from "sort-array";
 
+const sortMethods = {
+  online: (newMemberArr) =>
+    sortArray(newMemberArr, {
+      by: "online_status",
+      order: "desc",
+    }),
+  class: (newMemberArr) =>
+    sortArray(newMemberArr, {
+      by: "en",
+      order: "desc",
+      computed: {
+        en: (member) => member.main_class[0].name.en,
+      },
+    }),
+  name: (newMemberArr) =>
+    sortArray(newMemberArr, {
+      by: "first",
+      order: "asc",
+      computed: {
+        first: (member) => member.name.first,
+      },
+    }),
+  outfitrank: (newMemberArr) =>
+    sortArray(newMemberArr, {
+      by: "rank_ordinal",
+      order: "asc",
+    }),
+  battlerank: (newMemberArr) =>
+    sortArray(newMemberArr, {
+      by: "value",
+      order: "desc",
+      computed: {
+        value: (member) => member.battle_rank.value,
+      },
+    }),
+  kdr: (newMemberArr) =>
+    sortArray(newMemberArr, {
+      by: "kdr",
+      order: "desc",
+    }),
+};
+
 /**
  * Sorts the array and directly uses setMembers()
  * @param {array} arr
@@ -10,46 +52,8 @@ import sortArray from "sort-array";
  */
 function sortMembers(arr, sortMethod, setMembers) {
   let newMemberArr = arr.slice();
-  if (sortMethod === "online") {
-    sortArray(newMemberArr, {
-      by: "online_status",
-      order: "desc",
-    });
-  } else if (sortMethod === "class") {
-    sortArray(newMemberArr, {
-      by: "en",
-      order: "desc",
-      computed: {
-        en: (member) => member.main_class[0].name.en,
-      },
-    });
-  } else if (sortMethod === "name") {
-    sortArray(newMemberArr, {
-      by: "first",
-      order: "asc",
-      computed: {
-        first: (member) => member.name.first,
-      },
-    });
-  } else if (sortMethod === "outfitrank") {
-    sortArray(newMemberArr, {
-      by: "rank_ordinal",
-      order: "asc",
-    });
-  } else if (sortMethod === "battlerank") {
-    sortArray(newMemberArr, {
-      by: "value",
-      order: "desc",
-      computed: {
-        value: (member) => member.battle_rank.value,
-      },
-    });
-  } else if (sortMethod === "kdr") {
-    sortArray(newMemberArr, {
-      by: "kdr",
-      order: "desc",
-    });
-  }
+  const method = sortMethods[sortMethod];
+  method(newMemberArr);
   setMembers(newMemberArr);
 }
 
