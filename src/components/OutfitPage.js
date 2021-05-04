@@ -23,7 +23,7 @@ function OutfitPage() {
     factionMemberData,
     setFactionMemberData,
   ] = React.useState(null);
-  const [tableColumns, setTableColumns] = React.useState([
+  const [tableColumns] = React.useState([
     { label: "Class", config: "class" },
     { label: "Name", config: "name" },
     { label: "Outfit Rank", config: "outfitrank" },
