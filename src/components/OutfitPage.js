@@ -19,10 +19,8 @@ import sortMembers from "./OutfitPageHelpers/sortMembers";
 function OutfitPage() {
   const [data, setData] = React.useState(null);
   const [members, setMembers] = React.useState([]);
-  const [
-    factionMemberData,
-    setFactionMemberData,
-  ] = React.useState(null);
+  const [factionMemberData, setFactionMemberData] =
+    React.useState(null);
   const [tableColumns] = React.useState([
     { label: "Class", config: "class" },
     { label: "Name", config: "name" },
@@ -105,7 +103,7 @@ function OutfitPage() {
             </TableHeader>
           </Table>
         </Box>
-        <Comments name={data.outfit_list[0].alias} />
+        {/* <Comments name={data.outfit_list[0].alias} /> */}
       </div>
       <Footer />
     </>

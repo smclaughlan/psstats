@@ -19,9 +19,8 @@ function CharacterPage() {
   const [data, setData] = React.useState(null);
   const [dataId, setDataId] = React.useState(null);
 
-  const characterPageName = window.location.href.split(
-    "/"
-  )[4];
+  const characterPageName =
+    window.location.href.split("/")[4];
 
   React.useEffect(() => {
     async function getAndSetData() {
@@ -43,13 +42,11 @@ function CharacterPage() {
     <>
       <div className="basic">
         <CharacterPageTop data={data} />
-
         {charPageObj[characterPageName] ? (
           charPageObj[characterPageName]
         ) : (
           <></>
         )}
-
         <Box
           animation="fadeIn"
           className="basic"
@@ -87,7 +84,7 @@ function CharacterPage() {
             </Tab>
           </Tabs>
         </Box>
-        <Comments name={data.name.first} />
+        {/* <Comments name={data.name.first} /> */}
       </div>
       <Footer />
     </>
